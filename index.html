@@ -190,53 +190,27 @@
       position: relative; width: 480px; height: 480px;
       display: flex; align-items: center; justify-content: center;
     }
-    /* Outer subtle ring */
-    .hero-ring { position: absolute; border-radius: 50%; }
-    .hero-ring-3 { width: 490px; height: 490px; border: 1px solid rgba(155,108,58,0.1); animation: ringPulse 5s ease-in-out infinite; }
-    @keyframes ringPulse { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.04); opacity: 0.4; } }
-
-    /* Soft glow behind circle */
+    /* ── HERO ANIMATION: Breathing Light ── */
+    .hero-canvas {
+      position: absolute; pointer-events: none; z-index: 1;
+      width: 520px; height: 520px;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+    }
     .hero-glow {
-      position: absolute; width: 320px; height: 320px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(155,108,58,0.18) 0%, rgba(46,71,78,0.08) 50%, transparent 75%);
-      animation: glowPulse 3s ease-in-out infinite; z-index: 1;
+      position: absolute; width: 330px; height: 330px; border-radius: 50%; z-index: 1;
+      background: radial-gradient(circle, rgba(155,108,58,0.16) 0%, rgba(46,71,78,0.07) 52%, transparent 75%);
+      animation: glowBreathe 6s ease-in-out infinite;
     }
-    @keyframes glowPulse { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.15); opacity: 0.5; } }
-
-    /* Spinning arcs */
-    .hero-arc { position: absolute; border-radius: 50%; z-index: 3; }
-    .hero-arc-1 {
-      width: 330px; height: 330px;
-      border: 2px solid transparent;
-      border-top: 2px solid var(--bronze);
-      border-right: 2px solid rgba(155,108,58,0.35);
-      filter: drop-shadow(0 0 6px rgba(155,108,58,0.5));
-      animation: spinCW 4s linear infinite;
+    @keyframes glowBreathe { 0%,100%{transform:scale(1);opacity:0.75;} 50%{transform:scale(1.1);opacity:1;} }
+    .hero-shimmer-svg {
+      position: absolute; z-index: 3; pointer-events: none; overflow: visible;
+      width: 360px; height: 360px;
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
     }
-    .hero-arc-2 {
-      width: 380px; height: 380px;
-      border: 1.5px dashed rgba(46,71,78,0.22);
-      animation: spinCCW 10s linear infinite;
-    }
-    @keyframes spinCW  { to { transform: rotate(360deg); } }
-    @keyframes spinCCW { to { transform: rotate(-360deg); } }
-
-    /* Orbiting particles */
-    .hero-orbit {
-      position: absolute; border-radius: 50%;
-      animation: orbit linear infinite;
-    }
-    .hero-orbit-1 { width: 360px; height: 360px; animation-duration: 8s; }
-    .hero-orbit-2 { width: 420px; height: 420px; animation-duration: 13s; animation-direction: reverse; }
-    .hero-orbit-3 { width: 460px; height: 460px; animation-duration: 18s; animation-delay: -5s; }
-    @keyframes orbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-    .hero-dot {
-      display: block; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-      width: 9px; height: 9px; border-radius: 50%;
-      background: var(--bronze); box-shadow: 0 0 8px rgba(155,108,58,0.7);
-    }
-    .hero-dot-teal { width: 7px; height: 7px; background: var(--teal); box-shadow: 0 0 8px rgba(46,71,78,0.6); }
-    .hero-dot-sm   { width: 5px; height: 5px; background: rgba(155,108,58,0.55); box-shadow: 0 0 5px rgba(155,108,58,0.4); }
+    .hero-shim-1 { transform-origin: 180px 180px; animation: shimCW  16s linear infinite; }
+    .hero-shim-2 { transform-origin: 180px 180px; animation: shimCCW 24s linear infinite; }
+    @keyframes shimCW  { to { transform: rotate( 360deg); } }
+    @keyframes shimCCW { to { transform: rotate(-360deg); } }
     .hero-logo-circle {
       position: relative; z-index: 2;
       width: 300px; height: 300px; border-radius: 50%;
@@ -539,13 +513,9 @@
       .hero-visual { order: -1; }
       .hero-logo-wrap { width: 360px; height: 360px; }
       .hero-logo-circle { width: 220px; height: 220px; }
-      .hero-ring-3 { width: 360px; height: 360px; }
-      .hero-arc-1 { width: 250px; height: 250px; }
-      .hero-arc-2 { width: 290px; height: 290px; }
+      .hero-canvas { width: 380px; height: 380px; }
+      .hero-shimmer-svg { width: 270px; height: 270px; }
       .hero-glow { width: 240px; height: 240px; }
-      .hero-orbit-1 { width: 275px; height: 275px; }
-      .hero-orbit-2 { width: 315px; height: 315px; }
-      .hero-orbit-3 { width: 350px; height: 350px; }
       .about-inner { grid-template-columns: 1fr; }
       .about-card { max-width: 360px; }
       .cta-inner { grid-template-columns: 1fr; }
@@ -666,13 +636,28 @@
         </div>
         <div class="hero-visual" data-animate data-delay="2">
           <div class="hero-logo-wrap">
+            <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
             <div class="hero-glow"></div>
-            <div class="hero-ring hero-ring-3"></div>
-            <div class="hero-arc hero-arc-1"></div>
-            <div class="hero-arc hero-arc-2"></div>
-            <div class="hero-orbit hero-orbit-1"><span class="hero-dot"></span></div>
-            <div class="hero-orbit hero-orbit-2"><span class="hero-dot hero-dot-teal"></span></div>
-            <div class="hero-orbit hero-orbit-3"><span class="hero-dot hero-dot-sm"></span></div>
+            <svg class="hero-shimmer-svg" viewBox="0 0 360 360" aria-hidden="true">
+              <defs>
+                <linearGradient id="sg1" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="360" y2="0">
+                  <stop offset="0%"   stop-color="#9b6c3a" stop-opacity="0"/>
+                  <stop offset="45%"  stop-color="#9b6c3a" stop-opacity="0.75"/>
+                  <stop offset="100%" stop-color="#9b6c3a" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="sg2" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="360" y2="0">
+                  <stop offset="0%"   stop-color="#2e474e" stop-opacity="0"/>
+                  <stop offset="50%"  stop-color="#2e474e" stop-opacity="0.45"/>
+                  <stop offset="100%" stop-color="#2e474e" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <circle class="hero-shim-1" cx="180" cy="180" r="162"
+                fill="none" stroke="url(#sg1)" stroke-width="1.5"
+                stroke-linecap="round" stroke-dasharray="160 860"/>
+              <circle class="hero-shim-2" cx="180" cy="180" r="174"
+                fill="none" stroke="url(#sg2)" stroke-width="1"
+                stroke-linecap="round" stroke-dasharray="90 1010"/>
+            </svg>
             <div class="hero-logo-circle">
               <img src="logo_bear_vertical.png" alt="BEERFORMANCE COACHING" class="hero-logo-img">
             </div>
@@ -1713,6 +1698,96 @@
       document.querySelector('.form-fields').classList.add('hidden');
       document.getElementById('form-success').classList.add('visible');
     });
+
+    /* ─── HERO CANVAS ANIMATION ─── */
+    (function() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const canvas = document.getElementById('hero-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const DPR = window.devicePixelRatio || 1;
+      const SIZE = 520;
+      canvas.width  = SIZE * DPR;
+      canvas.height = SIZE * DPR;
+      ctx.scale(DPR, DPR);
+      const CX = SIZE / 2, CY = SIZE / 2;
+
+      const palette = [
+        [184, 133,  79],
+        [155, 108,  58],
+        [210, 168, 110],
+        [155, 108,  58],
+        [ 46,  71,  78],
+        [155, 108,  58],
+        [184, 133,  79],
+      ];
+
+      function mkParticle() {
+        const angle = Math.random() * Math.PI * 2;
+        const r     = Math.sqrt(Math.random()) * 195;
+        const col   = palette[Math.floor(Math.random() * palette.length)];
+        return {
+          x:           CX + Math.cos(angle) * r,
+          y:           CY + Math.sin(angle) * r,
+          size:        Math.random() * 2.8 + 0.8,
+          col,
+          alpha:       0,
+          maxAlpha:    Math.random() * 0.38 + 0.08,
+          vx:          (Math.random() - 0.5) * 0.12,
+          vy:          -(Math.random() * 0.22 + 0.06),
+          wobble:      Math.random() * Math.PI * 2,
+          wobbleSpeed: Math.random() * 0.018 + 0.006,
+          life:        0,
+          maxLife:     Math.random() * 220 + 140,
+          phase:       'in',
+        };
+      }
+
+      const particles = Array.from({ length: 48 }, () => {
+        const p = mkParticle();
+        p.life  = Math.floor(Math.random() * p.maxLife);
+        p.alpha = Math.random() * p.maxAlpha;
+        p.phase = 'hold';
+        return p;
+      });
+
+      function tick() {
+        ctx.clearRect(0, 0, SIZE, SIZE);
+        for (const p of particles) {
+          p.life++;
+          p.wobble += p.wobbleSpeed;
+          p.x += p.vx + Math.sin(p.wobble) * 0.08;
+          p.y += p.vy;
+
+          if (p.phase === 'in') {
+            p.alpha += p.maxAlpha / 35;
+            if (p.alpha >= p.maxAlpha) { p.alpha = p.maxAlpha; p.phase = 'hold'; }
+          } else if (p.phase === 'hold') {
+            if (p.life > p.maxLife * 0.65) p.phase = 'out';
+          } else {
+            p.alpha -= p.maxAlpha / 50;
+            if (p.alpha <= 0) { Object.assign(p, mkParticle()); }
+          }
+
+          // Soft bokeh halo
+          const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 3.5);
+          g.addColorStop(0, `rgba(${p.col},${p.alpha})`);
+          g.addColorStop(1, `rgba(${p.col},0)`);
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size * 3.5, 0, Math.PI * 2);
+          ctx.fillStyle = g;
+          ctx.fill();
+
+          // Bright core
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${p.col},${Math.min(p.alpha * 2.2, 0.9)})`;
+          ctx.fill();
+        }
+        requestAnimationFrame(tick);
+      }
+      tick();
+    })();
 
     /* ─── MODALS ─── */
     function openModal(id) {
