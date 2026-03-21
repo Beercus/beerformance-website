@@ -652,11 +652,8 @@
                 </linearGradient>
               </defs>
               <circle class="hero-shim-1" cx="180" cy="180" r="162"
-                fill="none" stroke="url(#sg1)" stroke-width="1.5"
-                stroke-linecap="round" stroke-dasharray="160 860"/>
-              <circle class="hero-shim-2" cx="180" cy="180" r="174"
-                fill="none" stroke="url(#sg2)" stroke-width="1"
-                stroke-linecap="round" stroke-dasharray="90 1010"/>
+                fill="none" stroke="url(#sg1)" stroke-width="1"
+                stroke-linecap="round" stroke-dasharray="120 900"/>
             </svg>
             <div class="hero-logo-circle">
               <img src="logo_bear_vertical.png" alt="BEERFORMANCE COACHING" class="hero-logo-img">
@@ -1699,7 +1696,7 @@
       document.getElementById('form-success').classList.add('visible');
     });
 
-    /* ─── HERO CANVAS ANIMATION ─── */
+    /* ─── HERO AURORA ANIMATION ─── */
     (function() {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       const canvas = document.getElementById('hero-canvas');
@@ -1712,78 +1709,49 @@
       ctx.scale(DPR, DPR);
       const CX = SIZE / 2, CY = SIZE / 2;
 
-      const palette = [
-        [184, 133,  79],
-        [155, 108,  58],
-        [210, 168, 110],
-        [155, 108,  58],
-        [ 46,  71,  78],
-        [155, 108,  58],
-        [184, 133,  79],
+      // Aurora orbs — each drifts in a slow, organic Lissajous-like path
+      const orbs = [
+        // Bronze/Gold — dominant, warm
+        { r:[0,0,0], orbitR:85, orbitRY:60, speed:0.00028, phase:0,           baseSize:195, pulseAmp:28, pulseFq:0.31, maxA:0.28, col:[184,133, 79] },
+        { r:[0,0,0], orbitR:55, orbitRY:75, speed:0.00019, phase:2.1,         baseSize:175, pulseAmp:22, pulseFq:0.27, maxA:0.22, col:[155,108, 58] },
+        { r:[0,0,0], orbitR:100,orbitRY:45, speed:0.00034, phase:4.4,         baseSize:155, pulseAmp:18, pulseFq:0.38, maxA:0.18, col:[218,178,118] },
+        // Teal — cool counterpoint
+        { r:[0,0,0], orbitR:70, orbitRY:90, speed:0.00022, phase:1.1,         baseSize:210, pulseAmp:30, pulseFq:0.22, maxA:0.17, col:[ 46, 71, 78] },
+        { r:[0,0,0], orbitR:110,orbitRY:55, speed:0.00015, phase:3.7,         baseSize:180, pulseAmp:25, pulseFq:0.19, maxA:0.14, col:[ 63, 94,103] },
+        // Pale gold center glow
+        { r:[0,0,0], orbitR:30, orbitRY:30, speed:0.00041, phase:5.2,         baseSize:130, pulseAmp:15, pulseFq:0.44, maxA:0.20, col:[230,195,145] },
       ];
 
-      function mkParticle() {
-        const angle = Math.random() * Math.PI * 2;
-        const r     = Math.sqrt(Math.random()) * 195;
-        const col   = palette[Math.floor(Math.random() * palette.length)];
-        return {
-          x:           CX + Math.cos(angle) * r,
-          y:           CY + Math.sin(angle) * r,
-          size:        Math.random() * 2.8 + 0.8,
-          col,
-          alpha:       0,
-          maxAlpha:    Math.random() * 0.38 + 0.08,
-          vx:          (Math.random() - 0.5) * 0.12,
-          vy:          -(Math.random() * 0.22 + 0.06),
-          wobble:      Math.random() * Math.PI * 2,
-          wobbleSpeed: Math.random() * 0.018 + 0.006,
-          life:        0,
-          maxLife:     Math.random() * 220 + 140,
-          phase:       'in',
-        };
-      }
-
-      const particles = Array.from({ length: 48 }, () => {
-        const p = mkParticle();
-        p.life  = Math.floor(Math.random() * p.maxLife);
-        p.alpha = Math.random() * p.maxAlpha;
-        p.phase = 'hold';
-        return p;
-      });
-
       function tick() {
+        const t = performance.now() * 0.001;
         ctx.clearRect(0, 0, SIZE, SIZE);
-        for (const p of particles) {
-          p.life++;
-          p.wobble += p.wobbleSpeed;
-          p.x += p.vx + Math.sin(p.wobble) * 0.08;
-          p.y += p.vy;
 
-          if (p.phase === 'in') {
-            p.alpha += p.maxAlpha / 35;
-            if (p.alpha >= p.maxAlpha) { p.alpha = p.maxAlpha; p.phase = 'hold'; }
-          } else if (p.phase === 'hold') {
-            if (p.life > p.maxLife * 0.65) p.phase = 'out';
-          } else {
-            p.alpha -= p.maxAlpha / 50;
-            if (p.alpha <= 0) { Object.assign(p, mkParticle()); }
-          }
+        for (const o of orbs) {
+          // Lissajous-ish drift: two frequency components per axis
+          const x = CX
+            + Math.cos(t * o.speed * 1000 + o.phase) * o.orbitR
+            + Math.cos(t * o.speed * 700  + o.phase * 1.3) * o.orbitR * 0.35;
+          const y = CY
+            + Math.sin(t * o.speed * 1000 + o.phase) * o.orbitRY
+            + Math.sin(t * o.speed * 600  + o.phase * 0.9) * o.orbitRY * 0.4;
 
-          // Soft bokeh halo
-          const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 3.5);
-          g.addColorStop(0, `rgba(${p.col},${p.alpha})`);
-          g.addColorStop(1, `rgba(${p.col},0)`);
+          // Breathing size & alpha
+          const size  = o.baseSize + Math.sin(t * o.pulseFq + o.phase) * o.pulseAmp;
+          const alpha = o.maxA * (0.65 + 0.35 * Math.sin(t * o.pulseFq * 0.7 + o.phase * 1.5));
+
+          // Layered radial gradient — soft inner, hard fade-out
+          const g = ctx.createRadialGradient(x, y, 0, x, y, size);
+          g.addColorStop(0,   `rgba(${o.col},${alpha})`);
+          g.addColorStop(0.35,`rgba(${o.col},${alpha * 0.6})`);
+          g.addColorStop(0.7, `rgba(${o.col},${alpha * 0.2})`);
+          g.addColorStop(1,   `rgba(${o.col},0)`);
+
           ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size * 3.5, 0, Math.PI * 2);
+          ctx.arc(x, y, size, 0, Math.PI * 2);
           ctx.fillStyle = g;
           ctx.fill();
-
-          // Bright core
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(${p.col},${Math.min(p.alpha * 2.2, 0.9)})`;
-          ctx.fill();
         }
+
         requestAnimationFrame(tick);
       }
       tick();
