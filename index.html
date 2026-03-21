@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BEERFORMANCE COACHING – Executive Coaching für Führung & Performance mit Marcus Beer. NLP Master, systemisch-integraler Coach, Fachtrainer. Kostenloses Erstgespräch buchen.">
+  <title>BEERFORMANCE COACHING | Marcus Beer – Executive Coach & Trainer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,300;1,6..12,400;1,6..12,600&display=swap" rel="stylesheet">
+  <style>
+    /* ─── DESIGN TOKENS ─── */
+    :root {
+      --teal:        #2e474e;
+      --teal-deep:   #1d2f34;
+      --teal-mid:    #3d5e67;
+      --teal-light:  #4f7480;
+      --teal-bg:     #eef3f4;
+      --bronze:      #9b6c3a;
+      --bronze-light:#b8854f;
+      --bronze-pale: #f3e8d8;
+      --bronze-wash: #faf5ee;
+      --cream:       #f5f0e8;
+      --white:       #ffffff;
+      --off-white:   #fafaf8;
+      --text-dark:   #1a2a2d;
+      --text-body:   #344a50;
+      --text-muted:  #6b8a91;
+      --border:      #dde8ea;
+      --border-mid:  #c2d6da;
+
+      --font-display: 'Lora', 'Georgia', serif;
+      --font-body:    'Nunito Sans', system-ui, sans-serif;
+
+      --nav-h: 72px;
+      --r-sm: 4px; --r-md: 8px; --r-lg: 16px; --r-xl: 24px; --r-full: 9999px;
+      --shadow-sm: 0 2px 12px rgba(46,71,78,0.08);
+      --shadow-md: 0 6px 28px rgba(46,71,78,0.12);
+      --shadow-lg: 0 16px 48px rgba(46,71,78,0.16);
+      --ease: cubic-bezier(0.0,0.0,0.2,1);
+    }
+
+    /* ─── RESET ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%; }
+    body { font-family: var(--font-body); font-size: 1rem; line-height: 1.7; color: var(--text-body); background: var(--white); overflow-x: hidden; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    ul, ol { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; font-size: inherit; color: inherit; }
+    input, textarea, select { font-family: var(--font-body); font-size: 1rem; }
+
+    .skip-link { position: absolute; top: -999px; left: 16px; background: var(--bronze); color: #fff; padding: 8px 16px; border-radius: var(--r-md); font-weight: 700; z-index: 9999; }
+    .skip-link:focus { top: 16px; }
+
+    /* ─── SCROLL ANIMATION ─── */
+    [data-animate] { opacity: 0; transform: translateY(28px); transition: opacity 0.55s var(--ease), transform 0.55s var(--ease); }
+    [data-animate].visible { opacity: 1; transform: none; }
+    [data-delay="1"] { transition-delay: 0.10s; }
+    [data-delay="2"] { transition-delay: 0.20s; }
+    [data-delay="3"] { transition-delay: 0.30s; }
+    [data-delay="4"] { transition-delay: 0.40s; }
+    [data-delay="5"] { transition-delay: 0.50s; }
+    [data-delay="6"] { transition-delay: 0.60s; }
+    @media (prefers-reduced-motion: reduce) {
+      [data-animate] { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ─── TYPOGRAPHY ─── */
+    h1, h2, h3, h4, h5 { font-family: var(--font-display); color: var(--text-dark); line-height: 1.25; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 600; }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 600; }
+    h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); font-weight: 500; }
+    p { margin-bottom: 0; }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: var(--r-full); font-family: var(--font-body);
+      font-size: 0.95rem; font-weight: 700; letter-spacing: 0.02em; line-height: 1;
+      min-height: 44px; transition: background 0.2s var(--ease), transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+      cursor: pointer; border: none; text-decoration: none; white-space: nowrap;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary { background: var(--bronze); color: #fff; box-shadow: 0 4px 18px rgba(155,108,58,0.35); }
+    .btn-primary:hover { background: var(--bronze-light); box-shadow: 0 6px 24px rgba(155,108,58,0.45); transform: translateY(-1px); }
+    .btn-secondary { background: transparent; color: var(--teal); border: 2px solid var(--teal); }
+    .btn-secondary:hover { background: var(--teal); color: #fff; }
+    .btn-white { background: #fff; color: var(--teal); font-weight: 700; }
+    .btn-white:hover { background: var(--bronze-pale); color: var(--teal-deep); transform: translateY(-1px); }
+    .btn-outline-white { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.7); }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.12); }
+    .btn-sm { padding: 10px 20px; font-size: 0.875rem; min-height: 38px; }
+
+    /* ─── SECTION WRAPPER ─── */
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 88px 0; }
+    .section-sm { padding: 56px 0; }
+    .section-label {
+      display: inline-block; font-family: var(--font-body); font-size: 0.78rem;
+      font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--bronze); margin-bottom: 12px;
+    }
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-header h2 { margin-bottom: 16px; }
+    .section-header p { color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 1.05rem; }
+    .divider { width: 48px; height: 3px; background: var(--bronze); border-radius: 2px; margin: 16px auto 0; }
+
+    /* ─── URGENCY STRIP ─── */
+    #urgency-strip {
+      background: var(--teal); color: #fff; text-align: center;
+      padding: 11px 24px; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.01em;
+    }
+    #urgency-strip a { color: #fff; text-decoration: underline; text-underline-offset: 3px; margin-left: 8px; }
+    #urgency-strip a:hover { opacity: 0.85; }
+
+    /* ─── NAVIGATION ─── */
+    #nav {
+      position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border); transition: box-shadow 0.25s var(--ease);
+    }
+    #nav.scrolled { box-shadow: var(--shadow-md); }
+    .nav-inner {
+      max-width: 1120px; margin: 0 auto; padding: 0 24px;
+      height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .nav-logo img { height: 40px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      padding: 8px 14px; border-radius: var(--r-md); font-size: 0.9rem; font-weight: 600;
+      color: var(--text-body); transition: color 0.18s, background 0.18s;
+      min-height: 44px; display: flex; align-items: center;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--teal); background: var(--teal-bg); }
+    .nav-cta { margin-left: 12px; }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; padding: 10px;
+      width: 44px; height: 44px; align-items: center; justify-content: center;
+      border-radius: var(--r-md); transition: background 0.18s;
+    }
+    .hamburger:hover { background: var(--teal-bg); }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text-dark); border-radius: 2px; transition: all 0.25s var(--ease); }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    #mobile-menu {
+      display: none; background: #fff; border-top: 1px solid var(--border);
+      padding: 16px 24px 24px;
+    }
+    #mobile-menu.open { display: block; }
+    #mobile-menu a {
+      display: flex; align-items: center; padding: 13px 0; font-size: 1rem; font-weight: 600;
+      color: var(--text-body); border-bottom: 1px solid var(--border); min-height: 44px;
+    }
+    #mobile-menu a:last-of-type { border-bottom: none; }
+    #mobile-menu .btn { margin-top: 16px; width: 100%; justify-content: center; }
+
+    /* ─── HERO ─── */
+    #hero {
+      background: var(--white); padding: 80px 0 72px;
+      position: relative; overflow: hidden;
+    }
+    .hero-inner {
+      max-width: 1120px; margin: 0 auto; padding: 0 24px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--bronze-pale); border: 1px solid rgba(155,108,58,0.25);
+      border-radius: var(--r-full); padding: 7px 14px; margin-bottom: 24px;
+      font-size: 0.8rem; font-weight: 700; color: var(--bronze); letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .hero-badge-dot { width: 7px; height: 7px; background: var(--bronze); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
+    .hero-title { margin-bottom: 20px; }
+    .hero-title em { font-style: italic; color: var(--bronze); }
+    .hero-sub { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 32px; line-height: 1.65; max-width: 480px; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
+    .hero-trust { display: flex; flex-wrap: wrap; gap: 16px; }
+    .hero-trust-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.8rem; font-weight: 700; color: var(--text-muted); letter-spacing: 0.03em;
+    }
+    .hero-trust-item svg { color: var(--bronze); flex-shrink: 0; }
+    .hero-visual {
+      position: relative; display: flex; align-items: center; justify-content: center;
+    }
+    .hero-logo-wrap {
+      position: relative; width: 480px; height: 480px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    /* Outer subtle ring */
+    .hero-ring { position: absolute; border-radius: 50%; }
+    .hero-ring-3 { width: 490px; height: 490px; border: 1px solid rgba(155,108,58,0.1); animation: ringPulse 5s ease-in-out infinite; }
+    @keyframes ringPulse { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.04); opacity: 0.4; } }
+
+    /* Soft glow behind circle */
+    .hero-glow {
+      position: absolute; width: 320px; height: 320px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(155,108,58,0.18) 0%, rgba(46,71,78,0.08) 50%, transparent 75%);
+      animation: glowPulse 3s ease-in-out infinite; z-index: 1;
+    }
+    @keyframes glowPulse { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.15); opacity: 0.5; } }
+
+    /* Spinning arcs */
+    .hero-arc { position: absolute; border-radius: 50%; z-index: 3; }
+    .hero-arc-1 {
+      width: 330px; height: 330px;
+      border: 2px solid transparent;
+      border-top: 2px solid var(--bronze);
+      border-right: 2px solid rgba(155,108,58,0.35);
+      filter: drop-shadow(0 0 6px rgba(155,108,58,0.5));
+      animation: spinCW 4s linear infinite;
+    }
+    .hero-arc-2 {
+      width: 380px; height: 380px;
+      border: 1.5px dashed rgba(46,71,78,0.22);
+      animation: spinCCW 10s linear infinite;
+    }
+    @keyframes spinCW  { to { transform: rotate(360deg); } }
+    @keyframes spinCCW { to { transform: rotate(-360deg); } }
+
+    /* Orbiting particles */
+    .hero-orbit {
+      position: absolute; border-radius: 50%;
+      animation: orbit linear infinite;
+    }
+    .hero-orbit-1 { width: 360px; height: 360px; animation-duration: 8s; }
+    .hero-orbit-2 { width: 420px; height: 420px; animation-duration: 13s; animation-direction: reverse; }
+    .hero-orbit-3 { width: 460px; height: 460px; animation-duration: 18s; animation-delay: -5s; }
+    @keyframes orbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .hero-dot {
+      display: block; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 9px; height: 9px; border-radius: 50%;
+      background: var(--bronze); box-shadow: 0 0 8px rgba(155,108,58,0.7);
+    }
+    .hero-dot-teal { width: 7px; height: 7px; background: var(--teal); box-shadow: 0 0 8px rgba(46,71,78,0.6); }
+    .hero-dot-sm   { width: 5px; height: 5px; background: rgba(155,108,58,0.55); box-shadow: 0 0 5px rgba(155,108,58,0.4); }
+    .hero-logo-circle {
+      position: relative; z-index: 2;
+      width: 300px; height: 300px; border-radius: 50%;
+      background: var(--white); box-shadow: var(--shadow-lg);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-logo-img {
+      width: 62%; height: auto; object-fit: contain;
+    }
+    .hero-float-badge {
+      position: absolute; bottom: 20px; right: -12px; z-index: 3;
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--r-lg);
+      padding: 10px 16px; box-shadow: var(--shadow-md);
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.8rem;
+    }
+    .hero-float-badge strong { display: block; color: var(--text-dark); font-weight: 700; }
+    .hero-float-badge span { color: var(--text-muted); }
+    .hero-float-icon { width: 36px; height: 36px; background: var(--bronze-pale); border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; color: var(--bronze); flex-shrink: 0; }
+
+    /* ─── TRUST STRIP ─── */
+    #trust {
+      background: var(--teal); color: #fff; padding: 48px 0;
+    }
+    .trust-grid {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; text-align: center;
+    }
+    .trust-item { padding: 8px 16px; }
+    .trust-number { font-family: var(--font-display); font-size: 2.6rem; font-weight: 700; color: #fff; line-height: 1; }
+    .trust-suffix { font-size: 1.4rem; color: rgba(255,255,255,0.7); }
+    .trust-label { font-size: 0.875rem; color: rgba(255,255,255,0.75); margin-top: 6px; font-weight: 600; }
+    .trust-divider { width: 1px; background: rgba(255,255,255,0.15); align-self: stretch; }
+
+    /* ─── PAIN ─── */
+    #pain { background: var(--cream); }
+    .pain-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-bottom: 48px; }
+    .pain-card {
+      background: var(--white); border-radius: var(--r-lg); padding: 28px 24px;
+      border: 1px solid var(--border); transition: box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
+    }
+    .pain-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .pain-icon { width: 44px; height: 44px; background: var(--bronze-pale); border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; color: var(--bronze); margin-bottom: 16px; }
+    .pain-card h3 { font-size: 1rem; font-family: var(--font-body); font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+    .pain-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; }
+    .pain-bridge {
+      background: var(--teal); border-radius: var(--r-xl); padding: 40px 48px;
+      text-align: center; color: #fff;
+    }
+    .pain-bridge p { font-family: var(--font-display); font-size: 1.35rem; font-style: italic; line-height: 1.55; color: rgba(255,255,255,0.92); max-width: 680px; margin: 0 auto; }
+
+    /* ─── ABOUT ─── */
+    #about { background: var(--white); }
+    .about-inner { display: grid; grid-template-columns: 380px 1fr; gap: 64px; align-items: start; }
+    .about-card {
+      background: var(--cream); border-radius: var(--r-xl); padding: 36px 28px;
+      text-align: center; border: 1px solid var(--border);
+    }
+    .about-logo-circle { width: 140px; height: 140px; border-radius: 50%; background: var(--white); box-shadow: var(--shadow-sm); margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .about-logo { width: 62%; height: auto; object-fit: contain; }
+    .about-name { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
+    .about-title { font-size: 0.875rem; color: var(--bronze); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 20px; }
+    .about-credentials { display: flex; flex-direction: column; gap: 10px; text-align: left; margin-top: 20px; }
+    .about-cred { display: flex; align-items: center; gap: 10px; font-size: 0.875rem; color: var(--text-body); }
+    .about-cred-dot { width: 8px; height: 8px; background: var(--bronze); border-radius: 50%; flex-shrink: 0; }
+    .about-content .section-label { margin-bottom: 8px; }
+    .about-content h2 { margin-bottom: 20px; }
+    .about-content p { color: var(--text-body); margin-bottom: 16px; line-height: 1.75; }
+    .about-quote {
+      background: var(--bronze-pale); border-left: 3px solid var(--bronze); border-radius: 0 var(--r-md) var(--r-md) 0;
+      padding: 20px 24px; margin: 28px 0;
+    }
+    .about-quote p { font-family: var(--font-display); font-size: 1.1rem; font-style: italic; color: var(--teal); margin: 0; }
+
+    /* ─── AUDIENCE ─── */
+    #audience { background: var(--teal-bg); }
+    .audience-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; margin-bottom: 36px; }
+    .audience-card {
+      background: var(--white); border-radius: var(--r-lg); padding: 28px 22px;
+      border: 1px solid var(--border); text-align: center; transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .audience-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .audience-icon { width: 52px; height: 52px; background: var(--teal); border-radius: var(--r-full); display: flex; align-items: center; justify-content: center; color: #fff; margin: 0 auto 16px; }
+    .audience-card h3 { font-size: 1rem; font-family: var(--font-body); font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+    .audience-card p { font-size: 0.85rem; color: var(--text-muted); }
+    .audience-not {
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--r-lg);
+      padding: 28px 32px; display: flex; gap: 32px; align-items: flex-start; flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .audience-not-label { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; white-space: nowrap; margin-top: 3px; }
+    .audience-not-list { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; }
+    .audience-not-item { background: var(--cream); border-radius: var(--r-full); padding: 6px 14px; font-size: 0.85rem; color: var(--text-muted); border: 1px solid var(--border); }
+    .audience-promise {
+      background: var(--teal); border-radius: var(--r-xl); padding: 32px 40px;
+      display: flex; align-items: center; gap: 24px; color: #fff;
+    }
+    .audience-promise-icon { width: 56px; height: 56px; background: rgba(255,255,255,0.12); border-radius: var(--r-full); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .audience-promise p { font-size: 1.05rem; line-height: 1.6; }
+    .audience-promise strong { font-weight: 700; }
+
+    /* ─── BANNER ─── */
+    #banner {
+      background: var(--teal-deep); padding: 80px 0; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    #banner::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('logo_bear_vertical.png') center/300px no-repeat;
+      opacity: 0.04; pointer-events: none;
+    }
+    .banner-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; padding: 0 24px; }
+    .banner-label { color: var(--bronze-light); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+    #banner h2 { color: #fff; font-size: clamp(1.8rem,4vw,2.8rem); margin-bottom: 16px; }
+    #banner p { color: rgba(255,255,255,0.75); font-size: 1.05rem; margin-bottom: 36px; }
+    .banner-note { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 14px; }
+
+    /* ─── SERVICES ─── */
+    #services { background: var(--white); }
+    .services-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; align-items: start; }
+    .service-item {
+      border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden;
+      transition: box-shadow 0.25s; background: var(--white);
+    }
+    .service-item:hover { box-shadow: var(--shadow-md); }
+    .service-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 24px; cursor: pointer; gap: 16px;
+      min-height: 44px; user-select: none;
+    }
+    .service-header-left { display: flex; align-items: center; gap: 14px; }
+    .service-num { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--bronze); line-height: 1; min-width: 24px; }
+    .service-name { font-size: 1rem; font-weight: 700; color: var(--text-dark); }
+    .service-tag { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; display: block; margin-top: 2px; }
+    .service-chevron { color: var(--teal); transition: transform 0.3s var(--ease); flex-shrink: 0; }
+    .service-item.open .service-chevron { transform: rotate(180deg); }
+    .service-item.open .service-header { border-bottom: 1px solid var(--border); background: var(--teal-bg); }
+    .service-body { max-height: 0; overflow: hidden; transition: max-height 0.35s var(--ease); }
+    .service-body-inner { padding: 22px 24px; }
+    .service-body p { color: var(--text-body); font-size: 0.95rem; line-height: 1.7; margin-bottom: 16px; }
+    .service-features { display: flex; flex-direction: column; gap: 8px; }
+    .service-feature { display: flex; align-items: flex-start; gap: 10px; font-size: 0.875rem; color: var(--text-body); }
+    .service-feature-dot { width: 6px; height: 6px; background: var(--bronze); border-radius: 50%; flex-shrink: 0; margin-top: 7px; }
+
+    /* ─── PROCESS ─── */
+    #process { background: var(--teal); }
+    #process .section-header h2 { color: #fff; }
+    #process .section-header p { color: rgba(255,255,255,0.7); }
+    #process .section-label { color: rgba(255,255,255,0.6); }
+    #process .divider { background: rgba(255,255,255,0.3); }
+    .process-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
+    .process-step { text-align: center; }
+    .process-num {
+      width: 60px; height: 60px; background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.25);
+      border-radius: var(--r-full); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
+      font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: #fff;
+    }
+    .process-step h3 { color: #fff; font-size: 1.05rem; margin-bottom: 10px; }
+    .process-step p { color: rgba(255,255,255,0.7); font-size: 0.875rem; }
+    .process-connector { display: none; }
+
+    /* ─── TOPICS ─── */
+    #topics { background: var(--cream); }
+    .topics-chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    .topic-chip {
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--r-full);
+      padding: 10px 18px; font-size: 0.875rem; font-weight: 600; color: var(--text-body);
+      transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+      cursor: default;
+    }
+    .topic-chip:hover { background: var(--teal); color: #fff; border-color: var(--teal); transform: translateY(-2px); }
+
+    /* ─── TRANSFORMATION ─── */
+    #transformation { background: var(--white); }
+    .transform-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 32px; align-items: center; }
+    .transform-col { display: flex; flex-direction: column; gap: 12px; }
+    .transform-col-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+    .transform-before .transform-col-label { color: var(--text-muted); }
+    .transform-after .transform-col-label { color: var(--bronze); }
+    .transform-item {
+      background: var(--cream); border-radius: var(--r-md); padding: 14px 18px;
+      font-size: 0.9rem; color: var(--text-body); border: 1px solid var(--border);
+    }
+    .transform-after .transform-item { background: var(--bronze-pale); border-color: rgba(155,108,58,0.2); color: var(--text-dark); }
+    .transform-arrow {
+      width: 52px; height: 52px; background: var(--teal); border-radius: var(--r-full);
+      display: flex; align-items: center; justify-content: center; color: #fff;
+      flex-shrink: 0; align-self: center;
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    #testimonials { background: var(--teal-bg); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .testimonial-card {
+      background: var(--white); border-radius: var(--r-xl); padding: 32px 28px;
+      border: 1px solid var(--border); display: flex; flex-direction: column; gap: 20px;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .testimonial-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .testimonial-stars { display: flex; gap: 4px; }
+    .star { color: var(--bronze); font-size: 1rem; }
+    .testimonial-quote { font-family: var(--font-display); font-size: 1.1rem; font-style: italic; color: var(--text-dark); line-height: 1.6; flex: 1; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-avatar {
+      width: 44px; height: 44px; border-radius: var(--r-full); background: var(--teal);
+      display: flex; align-items: center; justify-content: center; color: #fff;
+      font-family: var(--font-display); font-size: 1rem; font-weight: 600; flex-shrink: 0;
+    }
+    .testimonial-name { font-weight: 700; font-size: 0.9rem; color: var(--text-dark); }
+    .testimonial-role { font-size: 0.8rem; color: var(--text-muted); }
+
+    /* ─── FAQ ─── */
+    #faq { background: var(--white); }
+    .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; background: var(--white); }
+    .faq-q {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 24px; cursor: pointer; gap: 16px; min-height: 44px; user-select: none;
+    }
+    .faq-q h3 { font-size: 1rem; font-family: var(--font-body); font-weight: 700; color: var(--text-dark); line-height: 1.4; }
+    .faq-chevron { color: var(--teal); transition: transform 0.3s var(--ease); flex-shrink: 0; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-item.open .faq-q { background: var(--teal-bg); border-bottom: 1px solid var(--border); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s var(--ease); }
+    .faq-a-inner { padding: 20px 24px; color: var(--text-body); font-size: 0.95rem; line-height: 1.75; }
+
+    /* ─── CTA SECTION ─── */
+    #cta { background: var(--teal-deep); padding: 88px 0; }
+    .cta-inner { display: grid; grid-template-columns: 1fr 380px; gap: 64px; align-items: start; }
+    #cta .section-label { color: rgba(255,255,255,0.6); }
+    #cta h2 { color: #fff; margin-bottom: 16px; }
+    #cta > .container > .cta-inner > div:first-child p { color: rgba(255,255,255,0.75); font-size: 1.05rem; margin-bottom: 28px; }
+    .cta-contact-cards { display: flex; flex-direction: column; gap: 12px; }
+    .cta-contact-card {
+      display: flex; align-items: center; gap: 14px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--r-lg); padding: 16px 20px; color: #fff;
+      transition: background 0.2s; text-decoration: none;
+    }
+    .cta-contact-card:hover { background: rgba(255,255,255,0.1); }
+    .cta-contact-icon { width: 40px; height: 40px; background: var(--bronze); border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .cta-contact-label { font-size: 0.75rem; color: rgba(255,255,255,0.55); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+    .cta-contact-val { font-size: 0.95rem; font-weight: 700; }
+    .cta-promise { margin-top: 20px; font-size: 0.8rem; color: rgba(255,255,255,0.5); display: flex; align-items: center; gap: 6px; }
+
+    /* ─── FORM ─── */
+    .contact-form-box {
+      background: var(--white); border-radius: var(--r-xl); padding: 36px 32px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+    .form-title { font-family: var(--font-display); font-size: 1.4rem; color: var(--text-dark); margin-bottom: 6px; }
+    .form-sub { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 24px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%; padding: 12px 14px; border: 1.5px solid var(--border-mid); border-radius: var(--r-md);
+      font-size: 0.95rem; color: var(--text-dark); background: var(--white);
+      transition: border-color 0.2s, box-shadow 0.2s; outline: none; line-height: 1.5;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(46,71,78,0.1); }
+    .form-group input.error,
+    .form-group textarea.error,
+    .form-group select.error { border-color: #c0392b; }
+    .form-group .error-msg { font-size: 0.8rem; color: #c0392b; margin-top: 4px; display: none; }
+    .form-group .error-msg.visible { display: block; }
+    .form-group textarea { resize: vertical; min-height: 96px; }
+    .form-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236b8a91' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+    .form-submit { width: 100%; padding: 15px; background: var(--bronze); color: #fff; border: none; border-radius: var(--r-full); font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.2s, transform 0.2s; margin-top: 4px; }
+    .form-submit:hover { background: var(--bronze-light); transform: translateY(-1px); }
+    .form-submit:active { transform: scale(0.98); }
+    .form-success {
+      display: none; text-align: center; padding: 32px 16px;
+    }
+    .form-success.visible { display: block; }
+    .form-success-icon { width: 56px; height: 56px; background: #e8f5e9; border-radius: var(--r-full); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; color: #2e7d32; }
+    .form-success h3 { color: var(--text-dark); margin-bottom: 8px; }
+    .form-success p { color: var(--text-muted); font-size: 0.9rem; }
+    .form-fields.hidden { display: none; }
+
+    /* ─── FOOTER ─── */
+    footer { background: var(--teal-deep); color: rgba(255,255,255,0.75); padding: 56px 0 32px; }
+    .footer-inner { display: grid; grid-template-columns: 240px 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+    .footer-brand img { height: 36px; margin-bottom: 16px; filter: brightness(0) invert(1); opacity: 0.9; }
+    .footer-brand p { font-size: 0.875rem; line-height: 1.65; max-width: 200px; }
+    .footer-col h4 { color: #fff; font-family: var(--font-body); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+    .footer-col a { display: block; font-size: 0.875rem; padding: 4px 0; transition: color 0.18s; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: gap-12; font-size: 0.8rem; gap: 12px; }
+    .footer-bottom-links { display: flex; gap: 20px; }
+    .footer-bottom-links a:hover { color: #fff; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-visual { order: -1; }
+      .hero-logo-wrap { width: 360px; height: 360px; }
+      .hero-logo-circle { width: 220px; height: 220px; }
+      .hero-ring-3 { width: 360px; height: 360px; }
+      .hero-arc-1 { width: 250px; height: 250px; }
+      .hero-arc-2 { width: 290px; height: 290px; }
+      .hero-glow { width: 240px; height: 240px; }
+      .hero-orbit-1 { width: 275px; height: 275px; }
+      .hero-orbit-2 { width: 315px; height: 315px; }
+      .hero-orbit-3 { width: 350px; height: 350px; }
+      .about-inner { grid-template-columns: 1fr; }
+      .about-card { max-width: 360px; }
+      .cta-inner { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .trust-grid { grid-template-columns: repeat(2,1fr); gap: 0; }
+      .trust-divider { display: none; }
+    }
+    @media (max-width: 768px) {
+      .section { padding: 64px 0; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero-inner { text-align: center; }
+      .hero-trust { justify-content: center; }
+      .hero-ctas { justify-content: center; }
+      .hero-sub { margin: 0 auto 32px; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .audience-grid { grid-template-columns: repeat(2,1fr); }
+      .process-grid { grid-template-columns: repeat(2,1fr); }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .transform-grid { grid-template-columns: 1fr; }
+      .transform-arrow { transform: rotate(90deg); align-self: center; margin: 0 auto; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .pain-bridge { padding: 32px 24px; }
+      .audience-not { flex-direction: column; gap: 12px; }
+      .audience-promise { flex-direction: column; text-align: center; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .audience-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .hero-float-badge { display: none; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .trust-grid { grid-template-columns: repeat(2,1fr); }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+  <!-- ═══ URGENCY STRIP ═══ -->
+  <div id="urgency-strip" role="banner">
+    Limitierte Plätze im Q2 verfügbar — Jetzt sichern!
+    <a href="#cta">Erstgespräch buchen &rarr;</a>
+  </div>
+
+  <!-- ═══ NAVIGATION ═══ -->
+  <nav id="nav" aria-label="Hauptnavigation">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="BEERFORMANCE COACHING – Startseite">
+        <img src="logo_bear_horizontal.png" alt="BEERFORMANCE COACHING Logo" height="40">
+      </a>
+      <div class="nav-links" role="menubar">
+        <a href="#services" role="menuitem">Leistungen</a>
+        <a href="#about" role="menuitem">Über mich</a>
+        <a href="#process" role="menuitem">Ablauf</a>
+        <a href="#testimonials" role="menuitem">Stimmen</a>
+        <a href="#faq" role="menuitem">FAQ</a>
+      </div>
+      <a href="#cta" class="btn btn-primary btn-sm nav-cta" aria-label="Kostenloses Erstgespräch buchen">Erstgespräch buchen</a>
+      <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div id="mobile-menu" role="menu" aria-hidden="true">
+      <a href="#services" role="menuitem">Leistungen</a>
+      <a href="#about" role="menuitem">Über mich</a>
+      <a href="#process" role="menuitem">Ablauf</a>
+      <a href="#testimonials" role="menuitem">Stimmen</a>
+      <a href="#faq" role="menuitem">FAQ</a>
+      <a href="#cta" class="btn btn-primary" role="menuitem">Kostenloses Erstgespräch buchen</a>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- ═══ HERO ═══ -->
+    <section id="hero" aria-labelledby="hero-heading">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-badge" data-animate>
+            <span class="hero-badge-dot"></span>
+            Executive Coaching &amp; Training
+          </div>
+          <h1 class="hero-title" id="hero-heading" data-animate data-delay="1">
+            Ihr volles Potenzial.<br><em>Endlich entfaltet.</em>
+          </h1>
+          <p class="hero-sub" data-animate data-delay="2">Executive Coaching für Führung &amp; Performance — damit Sie klarer führen, besser entscheiden und nachhaltig wirken.</p>
+          <div class="hero-ctas" data-animate data-delay="3">
+            <a href="#cta" class="btn btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
+              Kostenloses Erstgespräch
+            </a>
+            <a href="#services" class="btn btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Leistungen ansehen
+            </a>
+          </div>
+          <div class="hero-trust" data-animate data-delay="4">
+            <div class="hero-trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              NLP Master
+            </div>
+            <div class="hero-trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Systemisch-integraler Coach
+            </div>
+            <div class="hero-trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Zertifizierter Fachtrainer
+            </div>
+            <div class="hero-trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Kostenlos &amp; unverbindlich
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual" data-animate data-delay="2">
+          <div class="hero-logo-wrap">
+            <div class="hero-glow"></div>
+            <div class="hero-ring hero-ring-3"></div>
+            <div class="hero-arc hero-arc-1"></div>
+            <div class="hero-arc hero-arc-2"></div>
+            <div class="hero-orbit hero-orbit-1"><span class="hero-dot"></span></div>
+            <div class="hero-orbit hero-orbit-2"><span class="hero-dot hero-dot-teal"></span></div>
+            <div class="hero-orbit hero-orbit-3"><span class="hero-dot hero-dot-sm"></span></div>
+            <div class="hero-logo-circle">
+              <img src="logo_bear_vertical.png" alt="BEERFORMANCE COACHING" class="hero-logo-img">
+            </div>
+            <div class="hero-float-badge" aria-hidden="true">
+              <div class="hero-float-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              </div>
+              <div>
+                <strong>200+ Coachings</strong>
+                <span>begleitet</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ TRUST STRIP ═══ -->
+    <section id="trust" aria-label="Kennzahlen">
+      <div class="container">
+        <div class="trust-grid">
+          <div class="trust-item" data-animate>
+            <div class="trust-number">15<span class="trust-suffix">+</span></div>
+            <div class="trust-label">Jahre Erfahrung</div>
+          </div>
+          <div class="trust-item" data-animate data-delay="1">
+            <div class="trust-number">200<span class="trust-suffix">+</span></div>
+            <div class="trust-label">Coachings begleitet</div>
+          </div>
+          <div class="trust-item" data-animate data-delay="2">
+            <div class="trust-number">3</div>
+            <div class="trust-label">Zertifizierungen</div>
+          </div>
+          <div class="trust-item" data-animate data-delay="3">
+            <div class="trust-number">98<span class="trust-suffix">%</span></div>
+            <div class="trust-label">Weiterempfehlung</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PAIN SECTION ═══ -->
+    <section id="pain" class="section" aria-labelledby="pain-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Kennen Sie das?</span>
+          <h2 id="pain-heading" data-animate>Diese Situationen sind mir vertraut</h2>
+          <p data-animate data-delay="1">Viele meiner Klienten kommen mit genau diesen Herausforderungen zu mir.</p>
+          <div class="divider" aria-hidden="true"></div>
+        </div>
+        <div class="pain-grid">
+          <div class="pain-card" data-animate>
+            <div class="pain-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <h3>Im Hamsterrad gefangen</h3>
+            <p>Sie arbeiten hart, investieren viel — doch das Gefühl von echtem Vorankommen fehlt. Die Energie reicht kaum noch.</p>
+          </div>
+          <div class="pain-card" data-animate data-delay="1">
+            <div class="pain-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><circle cx="12" cy="12" r="10"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <h3>Entscheidungen kosten Kraft</h3>
+            <p>Wichtige Entscheidungen quälen Sie länger als nötig. Zweifel und Unsicherheit rauben wertvolle Energie.</p>
+          </div>
+          <div class="pain-card" data-animate data-delay="2">
+            <div class="pain-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <h3>Führung ohne echte Verbindung</h3>
+            <p>Sie leiten ein Team, aber das Miteinander läuft nicht rund. Vertrauen und echte Zusammenarbeit bleiben Wunschdenken.</p>
+          </div>
+          <div class="pain-card" data-animate data-delay="3">
+            <div class="pain-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <h3>Erfolg, aber innere Leere</h3>
+            <p>Von außen sieht alles gut aus — aber innerlich fragen Sie sich: „Ist das wirklich alles?" Sinn und Erfüllung fehlen.</p>
+          </div>
+          <div class="pain-card" data-animate data-delay="4">
+            <div class="pain-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            </div>
+            <h3>Kommunikation kostet Nerven</h3>
+            <p>Schwierige Gespräche, komplexe Charaktere — die Interaktion mit bestimmten Menschen raubt Ihnen unverhältnismäßig viel Kraft.</p>
+          </div>
+          <div class="pain-card" data-animate data-delay="5">
+            <div class="pain-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </div>
+            <h3>Umsetzung stockt</h3>
+            <p>Sie wissen, was Sie wollen und wo Sie hinmöchten — doch die Umsetzung läuft nicht so, wie Sie es sich vorstellen.</p>
+          </div>
+        </div>
+        <div class="pain-bridge" data-animate>
+          <p>„Wenn eines oder mehrere dieser Themen Sie ansprechen: Sie sind nicht allein — und es gibt einen klaren Weg raus. Genau hier setze ich mit meinem Coaching an."</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ ABOUT ═══ -->
+    <section id="about" class="section" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="about-inner">
+          <div data-animate>
+            <div class="about-card">
+              <div class="about-logo-circle">
+                <img src="logo_bear_vertical.png" alt="Marcus Beer – BEERFORMANCE COACHING" class="about-logo">
+              </div>
+              <div class="about-name">Marcus Beer</div>
+              <div class="about-title">Executive Coach &amp; Trainer</div>
+              <div class="about-credentials">
+                <div class="about-cred"><span class="about-cred-dot"></span>NLP Master (DVNLP)</div>
+                <div class="about-cred"><span class="about-cred-dot"></span>Systemisch-integraler Coach</div>
+                <div class="about-cred"><span class="about-cred-dot"></span>Zertifizierter Fachtrainer</div>
+                <div class="about-cred"><span class="about-cred-dot"></span>15+ Jahre Praxiserfahrung</div>
+              </div>
+            </div>
+          </div>
+          <div class="about-content">
+            <span class="section-label" data-animate>Über mich</span>
+            <h2 id="about-heading" data-animate data-delay="1">Mein Antrieb: Ihr Wachstum</h2>
+            <p data-animate data-delay="2">Mit über 15 Jahren Erfahrung in Coaching, Training und Persönlichkeitsentwicklung begleite ich Führungskräfte, Unternehmer und ambitionierte Persönlichkeiten dabei, ihr volles Potenzial zu entfalten.</p>
+            <p data-animate data-delay="3">Mein Ansatz verbindet wissenschaftlich fundierte Methoden — NLP, systemisches Coaching, integrale Entwicklungspsychologie — mit echter Empathie und praxisnaher Wirksamkeit. Kein Schubladendenken, keine Standard-Rezepte: jeder Mensch bekommt das, was er wirklich braucht.</p>
+            <div class="about-quote" data-animate data-delay="4">
+              <p>„Ich glaube daran, dass in jedem Menschen mehr Potenzial steckt, als er sich selbst vorstellen kann."</p>
+            </div>
+            <a href="#cta" class="btn btn-primary" data-animate data-delay="5">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
+              Kostenloses Erstgespräch buchen
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ AUDIENCE ═══ -->
+    <section id="audience" class="section" aria-labelledby="audience-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Für wen?</span>
+          <h2 id="audience-heading" data-animate>Coaching, das zu Ihnen passt</h2>
+          <p data-animate data-delay="1">Mein Coaching richtet sich an Menschen, die bereit sind zu wachsen — privat und beruflich.</p>
+          <div class="divider" aria-hidden="true"></div>
+        </div>
+        <div class="audience-grid">
+          <div class="audience-card" data-animate>
+            <div class="audience-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+            </div>
+            <h3>Führungskräfte &amp; Manager</h3>
+            <p>Die klar, souverän und nachhaltig wirksam führen wollen.</p>
+          </div>
+          <div class="audience-card" data-animate data-delay="1">
+            <div class="audience-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <h3>Unternehmer &amp; Selbstständige</h3>
+            <p>Die ihr Unternehmen und sich selbst weiterentwickeln wollen.</p>
+          </div>
+          <div class="audience-card" data-animate data-delay="2">
+            <div class="audience-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <h3>High Performer</h3>
+            <p>Die ihre Spitzenleistung nachhaltig halten und ausbauen wollen.</p>
+          </div>
+          <div class="audience-card" data-animate data-delay="3">
+            <div class="audience-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+            </div>
+            <h3>Menschen in Veränderung</h3>
+            <p>Die in beruflichen oder privaten Umbruchphasen Orientierung suchen.</p>
+          </div>
+        </div>
+        <div class="audience-not" data-animate>
+          <span class="audience-not-label">Nicht geeignet für</span>
+          <div class="audience-not-list">
+            <span class="audience-not-item">Schnelle Patentlösungen</span>
+            <span class="audience-not-item">Therapie &amp; Behandlung psychischer Erkrankungen</span>
+            <span class="audience-not-item">Passive Teilnehmer ohne Eigeninitiative</span>
+          </div>
+        </div>
+        <div class="audience-promise" data-animate>
+          <div class="audience-promise-icon" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <p><strong>Mein Versprechen:</strong> Im kostenlosen Erstgespräch klären wir gemeinsam, ob und wie ich Ihnen helfen kann — offen, ehrlich und ohne Verkaufsdruck. Sie entscheiden.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ BANNER ═══ -->
+    <section id="banner" aria-hidden="false">
+      <div class="banner-inner">
+        <div class="banner-label" data-animate>Das Fundament</div>
+        <h2 data-animate data-delay="1">Wirksamkeit durch<br>echte Verbindung</h2>
+        <p data-animate data-delay="2">Mein Coaching wirkt, weil es Sie als ganzen Menschen sieht — nicht nur die Rolle, die Sie spielen. Nachhaltige Veränderung beginnt innen.</p>
+        <a href="#cta" class="btn btn-white" data-animate data-delay="3">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
+          Kostenloses Erstgespräch — kostenlos &amp; unverbindlich
+        </a>
+        <p class="banner-note" data-animate data-delay="4">Antwort innerhalb von 24 Stunden</p>
+      </div>
+    </section>
+
+    <!-- ═══ SERVICES ═══ -->
+    <section id="services" class="section" aria-labelledby="services-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Leistungen</span>
+          <h2 id="services-heading" data-animate>Was ich für Sie tue</h2>
+          <p data-animate data-delay="1">Individuell, praxisnah und auf Ihr Ziel ausgerichtet — klicken Sie, um mehr zu erfahren.</p>
+          <div class="divider" aria-hidden="true"></div>
+        </div>
+        <div class="services-grid" id="services-grid">
+
+          <div class="service-item open" data-animate>
+            <button class="service-header" aria-expanded="true" aria-controls="svc1-body">
+              <div class="service-header-left">
+                <span class="service-num">01</span>
+                <div>
+                  <div class="service-name">1:1 Executive Coaching</div>
+                  <span class="service-tag">Einzelpersonen</span>
+                </div>
+              </div>
+              <svg class="service-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="service-body" id="svc1-body">
+              <div class="service-body-inner">
+                <p>Intensives Einzelcoaching für Führungskräfte, die ihre Wirkung nachhaltig steigern wollen. Strategisches Denken, Entscheidungsqualität und persönliche Präsenz werden gezielt entwickelt.</p>
+                <div class="service-features">
+                  <div class="service-feature"><span class="service-feature-dot"></span>Wöchentliche oder zweiwöchentliche Sessions (60–90 Min.)</div>
+                  <div class="service-feature"><span class="service-feature-dot"></span>Online und in Präsenz möglich</div>
+                  <div class="service-feature"><span class="service-feature-dot"></span>Individueller Entwicklungsplan</div>
+                  <div class="service-feature"><span class="service-feature-dot"></span>Begleitung zwischen den Sessions</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-item" data-animate data-delay="1">
+            <button class="service-header" aria-expanded="false" aria-controls="svc2-body">
+              <div class="service-header-left">
+                <span class="service-num">02</span>
+                <div>
+                  <div class="service-name">Performance Coaching</div>
+                  <span class="service-tag">High Performer</span>
+                </div>
+              </div>
+              <svg class="service-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="service-body" id="svc2-body">
+              <div class="service-body-inner">
+                <p>Spitzenleistung systematisch aufbauen und erhalten. Fokus, Energie und Umsetzungsstärke für anhaltende Höchstleistung — ohne dabei auszubrennen.</p>
+                <div class="service-features">
+                  <div class="service-feature"><span class="service-feature-dot"></span>Energie- und Ressourcenmanagement</div>
+                  <div class="service-feature"><span class="service-feature-dot"></span>Fokus-Strategien für High Performer</div>
+                  <div class="service-feature"><span class="service-feature-dot"></span>Umgang mit Druck und Rückschlägen</div>
+                  <div class="service-feature"><span class="service-feature-dot"></span>Messbare Leistungssteigerung</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-item" data-animate data-delay="2">
+            <button class="service-header" aria-expanded="false" aria-controls="svc3-body">
+              <div class="service-header-left">
+                <span class="service-num">03</span>
+                <div>
+                  <div class="service-name">Führung in Veränderung</div>
+                  <span class="service-tag">Change-Prozesse</span>
+                </div>
+              </div>
+              <svg class="service-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="service-body" id="svc3-body">
+              <div class="service-body-inner">
+                <p>Change-Kompetenz systematisch stärken. Souverän durch Transformationsphasen führen und Teams sicher durch Unsicherheit begleiten.</p>
+                <div class="service-features">
+                  <div class="service-feature"><span class="service-feature-dot"></span>Resilienz in turbulenten Phasen</div>
+                  <div class="service-feature"><span class="service-feature-dot"></span>Kommunikation in Change-Prozessen</div>
+                  <div class="service-feature"><span class="service-feature-dot"></span>Mitarbeiter mitnehmen und motivieren</div>
+                  <div class="service-feature"><span class="service-feature-dot"></span>Stabilität als Führungspersönlichkeit</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-item" data-animate data-delay="3">
+            <button class="service-header" aria-expanded="false" aria-controls="svc4-body">
+              <div class="service-header-left">
+                <span class="service-num">04</span>
+                <div>
+                  <div class="service-name">Team-Coaching</div>
+                  <span class="service-tag">Teams &amp; Gruppen</span>
+                </div>
+              </div>
+              <svg class="service-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="service-body" id="svc4-body">
+              <div class="service-body-inner">
+                <p>Teams in ihrer Zusammenarbeit, Kommunikation und gemeinsamen Leistungsfähigkeit stärken. Vom Einzelkämpfer-Modus zur echten Einheit.</p>
+                <div class="service-features">
+                  <div class="service-feature"><span class="service-feature-dot"></span>Teamdynamiken verstehen und nutzen</div>
+                  <div class="service-feature"><span class="service-feature-dot"></span>Vertrauen und psychologische Sicherheit</div>
+                  <div class="service-feature"><span class="service-feature-dot"></span>Konstruktiver Umgang mit Konflikten</div>
+                  <div class="service-feature"><span class="service-feature-dot"></span>Gemeinsame Ziele und Werte</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-item" data-animate data-delay="4">
+            <button class="service-header" aria-expanded="false" aria-controls="svc5-body">
+              <div class="service-header-left">
+                <span class="service-num">05</span>
+                <div>
+                  <div class="service-name">Führungskräfte-Training</div>
+                  <span class="service-tag">Workshops &amp; Trainings</span>
+                </div>
+              </div>
+              <svg class="service-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="service-body" id="svc5-body">
+              <div class="service-body-inner">
+                <p>Praxisorientierte Trainings für Führungsteams — von Leadership-Grundlagen bis zu Advanced-Programmen für erfahrene Führungskräfte.</p>
+                <div class="service-features">
+                  <div class="service-feature"><span class="service-feature-dot"></span>Maßgeschneiderte Inhalte</div>
+                  <div class="service-feature"><span class="service-feature-dot"></span>Interaktives, praxisnahes Format</div>
+                  <div class="service-feature"><span class="service-feature-dot"></span>Sofort anwendbare Werkzeuge</div>
+                  <div class="service-feature"><span class="service-feature-dot"></span>Halbtagsformat bis mehrtägige Programme</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-item" data-animate data-delay="5">
+            <button class="service-header" aria-expanded="false" aria-controls="svc6-body">
+              <div class="service-header-left">
+                <span class="service-num">06</span>
+                <div>
+                  <div class="service-name">Persönlichkeitsentwicklung</div>
+                  <span class="service-tag">Privatpersonen</span>
+                </div>
+              </div>
+              <svg class="service-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="service-body" id="svc6-body">
+              <div class="service-body-inner">
+                <p>Tiefe Selbstkenntnis, authentische Werte-Klarheit und nachhaltige Veränderung auf persönlicher Ebene — für ein Leben, das wirklich zu Ihnen passt.</p>
+                <div class="service-features">
+                  <div class="service-feature"><span class="service-feature-dot"></span>Werte- und Identitätsarbeit</div>
+                  <div class="service-feature"><span class="service-feature-dot"></span>Blockaden lösen mit NLP</div>
+                  <div class="service-feature"><span class="service-feature-dot"></span>Authentische Selbstwirksamkeit</div>
+                  <div class="service-feature"><span class="service-feature-dot"></span>Lebensziele und persönliche Vision</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PROCESS ═══ -->
+    <section id="process" class="section" aria-labelledby="process-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Der Weg</span>
+          <h2 id="process-heading" data-animate>So arbeiten wir zusammen</h2>
+          <p data-animate data-delay="1">Ein klarer Prozess — vom ersten Kennenlernen bis zur nachhaltigen Verankerung.</p>
+          <div class="divider" aria-hidden="true"></div>
+        </div>
+        <div class="process-grid">
+          <div class="process-step" data-animate>
+            <div class="process-num" aria-hidden="true">1</div>
+            <h3>Kostenloses Erstgespräch</h3>
+            <p>30 Minuten, um sich kennenzulernen, Ihre Situation zu verstehen und zu klären, ob und wie ich helfen kann.</p>
+          </div>
+          <div class="process-step" data-animate data-delay="1">
+            <div class="process-num" aria-hidden="true">2</div>
+            <h3>Zielklärung &amp; Analyse</h3>
+            <p>Tiefenanalyse Ihrer Ausgangssituation, Ihrer Ressourcen und Ihrer Ziele. Gemeinsame Entwicklung einer individuellen Roadmap.</p>
+          </div>
+          <div class="process-step" data-animate data-delay="2">
+            <div class="process-num" aria-hidden="true">3</div>
+            <h3>Coaching-Prozess</h3>
+            <p>Regelmäßige Sessions mit klarem Fokus, konkreten Übungen und messbaren Fortschritten — angepasst an Ihr Tempo.</p>
+          </div>
+          <div class="process-step" data-animate data-delay="3">
+            <div class="process-num" aria-hidden="true">4</div>
+            <h3>Nachhaltige Verankerung</h3>
+            <p>Transfer in den Alltag, langfristige Wirkung und — auf Wunsch — Begleitung über den Coaching-Prozess hinaus.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ TOPICS ═══ -->
+    <section id="topics" class="section-sm" aria-labelledby="topics-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Themen</span>
+          <h2 id="topics-heading" data-animate>Was wir bearbeiten können</h2>
+          <div class="divider" aria-hidden="true"></div>
+        </div>
+        <div class="topics-chips" data-animate data-delay="1">
+          <span class="topic-chip">Selbstvertrauen</span>
+          <span class="topic-chip">Kommunikation</span>
+          <span class="topic-chip">Führungsstärke</span>
+          <span class="topic-chip">Entscheidungsfähigkeit</span>
+          <span class="topic-chip">Resilienz</span>
+          <span class="topic-chip">Work-Life-Balance</span>
+          <span class="topic-chip">Zielsetzung</span>
+          <span class="topic-chip">Motivation</span>
+          <span class="topic-chip">Konfliktlösung</span>
+          <span class="topic-chip">Stress-Management</span>
+          <span class="topic-chip">Selbstmanagement</span>
+          <span class="topic-chip">Teamdynamik</span>
+          <span class="topic-chip">Change-Management</span>
+          <span class="topic-chip">Authentizität</span>
+          <span class="topic-chip">Karriereplanung</span>
+          <span class="topic-chip">Mindset</span>
+          <span class="topic-chip">Energie &amp; Fokus</span>
+          <span class="topic-chip">Beziehungsgestaltung</span>
+          <span class="topic-chip">Selbstwirksamkeit</span>
+          <span class="topic-chip">Grenzen setzen</span>
+          <span class="topic-chip">Innere Klarheit</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ TRANSFORMATION ═══ -->
+    <section id="transformation" class="section" aria-labelledby="transform-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Vorher → Nachher</span>
+          <h2 id="transform-heading" data-animate>Was sich verändert</h2>
+          <p data-animate data-delay="1">Konkrete Veränderungen, die meine Klienten in und nach dem Coaching erleben.</p>
+          <div class="divider" aria-hidden="true"></div>
+        </div>
+        <div class="transform-grid" data-animate data-delay="1">
+          <div class="transform-col transform-before">
+            <div class="transform-col-label">Vorher</div>
+            <div class="transform-item">Reaktiv führen — auf Brände reagieren</div>
+            <div class="transform-item">Energieverlust und ständige Erschöpfung</div>
+            <div class="transform-item">Blockiert von Zweifeln und Unsicherheit</div>
+            <div class="transform-item">Im Hamsterrad — busy, aber nicht vorwärts</div>
+            <div class="transform-item">Kommunikation kostet Nerven</div>
+          </div>
+          <div class="transform-arrow" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+          <div class="transform-col transform-after">
+            <div class="transform-col-label">Nachher</div>
+            <div class="transform-item">Klar &amp; proaktiv führen — mit Strategie</div>
+            <div class="transform-item">Fokus, Energie und nachhaltige Leistung</div>
+            <div class="transform-item">Entschieden &amp; souverän in jeder Lage</div>
+            <div class="transform-item">Strategisch frei — Zeit für das Wesentliche</div>
+            <div class="transform-item">Kraftvolle, wirkungsvolle Kommunikation</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ TESTIMONIALS ═══ -->
+    <section id="testimonials" class="section" aria-labelledby="testimonials-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Stimmen</span>
+          <h2 id="testimonials-heading" data-animate>Was Klienten sagen</h2>
+          <p data-animate data-delay="1">Echte Erfahrungen — anonym auf Wunsch der Klienten.</p>
+          <div class="divider" aria-hidden="true"></div>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card" data-animate>
+            <div class="testimonial-stars" aria-label="5 von 5 Sternen">
+              <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+              <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+            </div>
+            <p class="testimonial-quote">„Marcus hat mir geholfen, meinen Führungsstil grundlegend zu transformieren. Innerhalb von sechs Monaten haben wir die Teamleistung deutlich gesteigert — und ich führe mit mehr Freude als je zuvor."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">T.K.</div>
+              <div>
+                <div class="testimonial-name">T. K.</div>
+                <div class="testimonial-role">Abteilungsleiter, München</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card" data-animate data-delay="1">
+            <div class="testimonial-stars" aria-label="5 von 5 Sternen">
+              <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+              <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+            </div>
+            <p class="testimonial-quote">„Ich war anfangs skeptisch, ob Coaching wirklich etwas bringt. Marcus hat mich eines Besseren belehrt. Meine Entscheidungssicherheit und mein Selbstvertrauen sind heute eine völlig andere Dimension."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">A.M.</div>
+              <div>
+                <div class="testimonial-name">A. M.</div>
+                <div class="testimonial-role">Unternehmerin, Hamburg</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card" data-animate data-delay="2">
+            <div class="testimonial-stars" aria-label="5 von 5 Sternen">
+              <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+              <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+            </div>
+            <p class="testimonial-quote">„Das Coaching mit Marcus war ein echter Wendepunkt. Ich führe heute klarer, ruhiger und mit viel mehr Freude. Mein Team spürt das — und ich auch."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">M.S.</div>
+              <div>
+                <div class="testimonial-name">M. S.</div>
+                <div class="testimonial-role">Team Lead, Frankfurt</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FAQ ═══ -->
+    <section id="faq" class="section" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Häufige Fragen</span>
+          <h2 id="faq-heading" data-animate>Ihre Fragen, meine Antworten</h2>
+          <div class="divider" aria-hidden="true"></div>
+        </div>
+        <div class="faq-list" id="faq-list">
+
+          <div class="faq-item" data-animate>
+            <button class="faq-q" aria-expanded="false" aria-controls="faq1-body">
+              <h3>Was kostet ein Coaching bei Ihnen?</h3>
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-a" id="faq1-body" role="region">
+              <div class="faq-a-inner">Das kostenlose Erstgespräch (30 Min.) ist komplett ohne Kosten oder Verpflichtung. Die Kosten für einen Coaching-Prozess variieren je nach Format und Umfang — wir besprechen das transparent im Erstgespräch, damit Sie eine fundierte Entscheidung treffen können.</div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-animate data-delay="1">
+            <button class="faq-q" aria-expanded="false" aria-controls="faq2-body">
+              <h3>Wie läuft das kostenlose Erstgespräch ab?</h3>
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-a" id="faq2-body" role="region">
+              <div class="faq-a-inner">Das Erstgespräch dauert ca. 30 Minuten und findet online oder telefonisch statt. Wir sprechen über Ihre aktuelle Situation, Ihre Ziele und ob ein Coaching-Prozess der richtige nächste Schritt für Sie ist. Kein Verkaufsdruck — Sie entscheiden danach in Ruhe.</div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-animate data-delay="2">
+            <button class="faq-q" aria-expanded="false" aria-controls="faq3-body">
+              <h3>Ist Coaching auch online möglich?</h3>
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-a" id="faq3-body" role="region">
+              <div class="faq-a-inner">Ja, selbstverständlich. Die meisten meiner Coachings finden per Videokonferenz statt — das funktioniert genauso wirksam wie Präsenz-Coaching. Präsenz-Termine sind nach Absprache möglich.</div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-animate data-delay="3">
+            <button class="faq-q" aria-expanded="false" aria-controls="faq4-body">
+              <h3>Wie lange dauert ein Coaching-Prozess?</h3>
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-a" id="faq4-body" role="region">
+              <div class="faq-a-inner">Das hängt von Ihren Zielen ab. Ein fokussiertes Kurzzeit-Coaching umfasst 3–5 Sessions, ein tiefgreifender Entwicklungsprozess 6–12 Monate. Im Erstgespräch klären wir, was für Ihre Situation sinnvoll ist.</div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-animate data-delay="4">
+            <button class="faq-q" aria-expanded="false" aria-controls="faq5-body">
+              <h3>Für wen ist Ihr Coaching besonders geeignet?</h3>
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-a" id="faq5-body" role="region">
+              <div class="faq-a-inner">Mein Coaching richtet sich an Führungskräfte, Unternehmer, High Performer und Menschen in beruflichen oder privaten Veränderungsphasen. Die wichtigste Voraussetzung: Bereitschaft zur Reflexion und zur aktiven Mitarbeit.</div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-animate data-delay="5">
+            <button class="faq-q" aria-expanded="false" aria-controls="faq6-body">
+              <h3>Wann sind erste Ergebnisse spürbar?</h3>
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-a" id="faq6-body" role="region">
+              <div class="faq-a-inner">Viele Klienten berichten von ersten spürbaren Veränderungen bereits nach den ersten 2–3 Sessions. Tiefgreifende, nachhaltige Veränderungen entstehen über einen längeren Zeitraum — je nach Thema und Ausgangssituation.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section id="cta" aria-labelledby="cta-heading">
+      <div class="container">
+        <div class="cta-inner">
+          <div>
+            <span class="section-label" data-animate>Jetzt starten</span>
+            <h2 id="cta-heading" data-animate data-delay="1">Ihr erster Schritt — kostenlos &amp; unverbindlich</h2>
+            <p data-animate data-delay="2">Buchen Sie jetzt Ihr kostenloses Erstgespräch und erleben Sie selbst, wie ein Coaching-Gespräch Klarheit schafft. Kein Verkaufsdruck. Nur Ihren nächsten Schritt klären.</p>
+            <div class="cta-contact-cards" data-animate data-delay="3">
+              <a href="tel:+4915129785094" class="cta-contact-card">
+                <div class="cta-contact-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                </div>
+                <div>
+                  <div class="cta-contact-label">Telefon</div>
+                  <div class="cta-contact-val">+49 151 29785094</div>
+                </div>
+              </a>
+              <a href="mailto:info@beerformance.de" class="cta-contact-card">
+                <div class="cta-contact-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div>
+                  <div class="cta-contact-label">E-Mail</div>
+                  <div class="cta-contact-val">info@beerformance.de</div>
+                </div>
+              </a>
+            </div>
+            <p class="cta-promise" data-animate data-delay="4">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Antwort innerhalb von 24 Stunden garantiert
+            </p>
+          </div>
+          <div data-animate data-delay="2">
+            <div class="contact-form-box">
+              <div class="form-fields">
+                <h3 class="form-title">Erstgespräch anfragen</h3>
+                <p class="form-sub">Kostenlos, unverbindlich — in weniger als 2 Minuten ausgefüllt.</p>
+                <form id="contact-form" novalidate>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="f-name">Vorname *</label>
+                      <input type="text" id="f-name" name="name" autocomplete="given-name" placeholder="Max" required>
+                      <span class="error-msg" id="err-name">Bitte geben Sie Ihren Vornamen ein.</span>
+                    </div>
+                    <div class="form-group">
+                      <label for="f-surname">Nachname *</label>
+                      <input type="text" id="f-surname" name="surname" autocomplete="family-name" placeholder="Mustermann" required>
+                      <span class="error-msg" id="err-surname">Bitte geben Sie Ihren Nachnamen ein.</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="f-email">E-Mail-Adresse *</label>
+                    <input type="email" id="f-email" name="email" autocomplete="email" placeholder="max@beispiel.de" required>
+                    <span class="error-msg" id="err-email">Bitte geben Sie eine gültige E-Mail-Adresse ein.</span>
+                  </div>
+                  <div class="form-group">
+                    <label for="f-phone">Telefon (optional)</label>
+                    <input type="tel" id="f-phone" name="phone" autocomplete="tel" placeholder="+49 ...">
+                  </div>
+                  <div class="form-group">
+                    <label for="f-topic">Mein Hauptthema</label>
+                    <select id="f-topic" name="topic">
+                      <option value="">Ich bin noch unsicher — einfach melden</option>
+                      <option value="executive">1:1 Executive Coaching</option>
+                      <option value="performance">Performance Coaching</option>
+                      <option value="change">Führung in Veränderung</option>
+                      <option value="team">Team-Coaching</option>
+                      <option value="training">Führungskräfte-Training</option>
+                      <option value="personal">Persönlichkeitsentwicklung</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="f-message">Kurze Nachricht (optional)</label>
+                    <textarea id="f-message" name="message" placeholder="Was beschäftigt Sie gerade?"></textarea>
+                  </div>
+                  <button type="submit" class="form-submit">
+                    Erstgespräch anfragen — kostenlos &amp; unverbindlich
+                  </button>
+                </form>
+              </div>
+              <div class="form-success" id="form-success" role="status" aria-live="polite">
+                <div class="form-success-icon" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <h3>Anfrage erhalten!</h3>
+                <p>Vielen Dank. Marcus meldet sich persönlich innerhalb von 24 Stunden bei Ihnen.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="logo_bear_horizontal.png" alt="BEERFORMANCE COACHING">
+          <p>Executive Coaching für Führung &amp; Performance — mit Marcus Beer.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Leistungen</h4>
+          <a href="#services">1:1 Executive Coaching</a>
+          <a href="#services">Performance Coaching</a>
+          <a href="#services">Führung in Veränderung</a>
+          <a href="#services">Team-Coaching</a>
+          <a href="#services">Persönlichkeitsentwicklung</a>
+        </div>
+        <div class="footer-col">
+          <h4>Infos</h4>
+          <a href="#about">Über Marcus Beer</a>
+          <a href="#process">Ablauf &amp; Methodik</a>
+          <a href="#testimonials">Stimmen</a>
+          <a href="#faq">Häufige Fragen</a>
+        </div>
+        <div class="footer-col">
+          <h4>Kontakt</h4>
+          <a href="tel:+4915129785094">+49 151 29785094</a>
+          <a href="mailto:info@beerformance.de">info@beerformance.de</a>
+          <a href="#cta">Erstgespräch buchen</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2024 BEERFORMANCE COACHING · Marcus Beer</span>
+        <div class="footer-bottom-links">
+          <a href="#" data-modal="impressum">Impressum</a>
+          <a href="#" data-modal="datenschutz">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══ MODALS ═══ -->
+  <div id="modal-impressum" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-impressum-title" hidden>
+    <div class="modal-overlay"></div>
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2 id="modal-impressum-title">Impressum</h2>
+        <button class="modal-close" aria-label="Schließen">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h3>Angaben gemäß § 5 TMG</h3>
+        <p>
+          Marcus Beer<br>
+          BEERFORMANCE COACHING<br>
+          <strong>[Straße und Hausnummer]</strong><br>
+          <strong>[PLZ Ort]</strong>
+        </p>
+
+        <h3>Kontakt</h3>
+        <p>
+          Telefon: <a href="tel:+4915129785094">+49 151 29785094</a><br>
+          E-Mail: <a href="mailto:info@beerformance.de">info@beerformance.de</a>
+        </p>
+
+        <h3>Berufsbezeichnung und berufsrechtliche Regelungen</h3>
+        <p>
+          Berufsbezeichnung: Executive Coach &amp; Trainer<br>
+          Zuständige Aufsichtsbehörde: entfällt (freier Beruf)
+        </p>
+
+        <h3>Umsatzsteuer-Identifikationsnummer</h3>
+        <p>
+          Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:<br>
+          <strong>[USt-IdNr. ergänzen]</strong>
+        </p>
+
+        <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3>
+        <p>
+          Marcus Beer<br>
+          <strong>[Adresse wie oben]</strong>
+        </p>
+
+        <h3>Haftung für Inhalte</h3>
+        <p>Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+        <p>Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
+
+        <h3>Haftung für Links</h3>
+        <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+
+        <h3>Urheberrecht</h3>
+        <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-datenschutz" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-datenschutz-title" hidden>
+    <div class="modal-overlay"></div>
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2 id="modal-datenschutz-title">Datenschutzerklärung</h2>
+        <button class="modal-close" aria-label="Schließen">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h3>1. Verantwortlicher</h3>
+        <p>
+          Marcus Beer · BEERFORMANCE COACHING<br>
+          <strong>[Straße, PLZ Ort]</strong><br>
+          E-Mail: <a href="mailto:info@beerformance.de">info@beerformance.de</a><br>
+          Telefon: <a href="tel:+4915129785094">+49 151 29785094</a>
+        </p>
+
+        <h3>2. Erhebung und Verarbeitung personenbezogener Daten</h3>
+        <p>Personenbezogene Daten werden auf dieser Website nur im technisch notwendigen Umfang erhoben. In keinem Fall werden die erhobenen Daten verkauft oder aus anderen Gründen an Dritte weitergegeben.</p>
+
+        <h3>3. Kontaktformular und Kontaktaufnahme per E-Mail</h3>
+        <p>Wenn Sie über das Kontaktformular oder per E-Mail Kontakt aufnehmen, werden Ihre Angaben (Name, E-Mail-Adresse, ggf. Telefonnummer und Ihre Nachricht) zum Zweck der Bearbeitung der Anfrage und für den Fall von Anschlussfragen gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+        <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen).</p>
+        <p>Ihre Daten werden nach abschließender Bearbeitung Ihrer Anfrage gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
+
+        <h3>4. Google Fonts</h3>
+        <p>Diese Website verwendet Google Fonts (Anbieter: Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA). Dabei werden beim Aufruf der Seite Schriftarten von Google-Servern geladen. Dabei kann Ihre IP-Adresse an Google übermittelt werden.</p>
+        <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einheitlicher Darstellung). Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
+
+        <h3>5. Server-Log-Dateien</h3>
+        <p>Der Provider dieser Website erhebt und speichert automatisch Informationen in Server-Log-Dateien, die Ihr Browser automatisch übermittelt. Dies sind: Browsertyp und -version, verwendetes Betriebssystem, Referrer-URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage und IP-Adresse. Diese Daten sind nicht bestimmten Personen zuordenbar und werden nicht mit anderen Datenquellen zusammengeführt.</p>
+
+        <h3>6. Cookies</h3>
+        <p>Diese Website verwendet keine Tracking-Cookies. Es werden ausschließlich technisch notwendige Session-Daten des Browsers genutzt, die nach dem Schließen des Browsers gelöscht werden.</p>
+
+        <h3>7. Ihre Rechte</h3>
+        <p>Sie haben jederzeit das Recht auf:</p>
+        <ul class="modal-list">
+          <li>Auskunft über Ihre bei uns gespeicherten Daten (Art. 15 DSGVO)</li>
+          <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
+          <li>Löschung Ihrer Daten (Art. 17 DSGVO)</li>
+          <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+          <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
+          <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
+        </ul>
+        <p>Zur Ausübung Ihrer Rechte wenden Sie sich bitte an: <a href="mailto:info@beerformance.de">info@beerformance.de</a></p>
+        <p>Zudem haben Sie das Recht, sich bei einer Aufsichtsbehörde für den Datenschutz zu beschweren.</p>
+
+        <h3>8. Datensicherheit</h3>
+        <p>Diese Website nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://" auf „https://" wechselt.</p>
+
+        <p class="modal-updated">Stand: März 2025</p>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    /* ─── MODALS ─── */
+    .modal { position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 16px; }
+    .modal[hidden] { display: none; }
+    .modal-overlay { position: absolute; inset: 0; background: rgba(26,42,45,0.6); backdrop-filter: blur(4px); cursor: pointer; }
+    .modal-box {
+      position: relative; z-index: 1; background: var(--white); border-radius: var(--r-xl);
+      width: 100%; max-width: 680px; max-height: 88vh;
+      display: flex; flex-direction: column; box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+      animation: modalIn 0.25s var(--ease);
+    }
+    @keyframes modalIn { from { opacity: 0; transform: translateY(20px) scale(0.97); } to { opacity: 1; transform: none; } }
+    .modal-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 32px; border-bottom: 1px solid var(--border); flex-shrink: 0;
+    }
+    .modal-header h2 { font-size: 1.4rem; color: var(--text-dark); }
+    .modal-close {
+      width: 40px; height: 40px; min-height: 44px; min-width: 44px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: var(--r-md); color: var(--text-muted); transition: background 0.18s, color 0.18s;
+    }
+    .modal-close:hover { background: var(--cream); color: var(--text-dark); }
+    .modal-body { padding: 28px 32px; overflow-y: auto; line-height: 1.75; }
+    .modal-body h3 { font-family: var(--font-body); font-size: 0.95rem; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: 0.05em; margin: 24px 0 8px; }
+    .modal-body h3:first-child { margin-top: 0; }
+    .modal-body p { font-size: 0.925rem; color: var(--text-body); margin-bottom: 10px; }
+    .modal-body a { color: var(--bronze); text-decoration: underline; text-underline-offset: 3px; }
+    .modal-body a:hover { color: var(--bronze-light); }
+    .modal-list { padding-left: 20px; list-style: disc; margin: 8px 0 12px; }
+    .modal-list li { font-size: 0.925rem; color: var(--text-body); margin-bottom: 4px; }
+    .modal-updated { font-size: 0.8rem; color: var(--text-muted); margin-top: 24px; border-top: 1px solid var(--border); padding-top: 16px; }
+    @media (max-width: 480px) {
+      .modal-header { padding: 20px; }
+      .modal-body { padding: 20px; }
+    }
+  </style>
+
+  <script>
+    /* ─── STICKY NAV ─── */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 80);
+    }, { passive: true });
+
+    /* ─── HAMBURGER MENU ─── */
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      const open = hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', String(open));
+      mobileMenu.setAttribute('aria-hidden', String(!open));
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      });
+    });
+
+    /* ─── SMOOTH SCROLL ─── */
+    const NAV_H = () => nav.offsetHeight + (document.getElementById('urgency-strip')?.offsetHeight || 0);
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        window.scrollTo({ top: target.offsetTop - NAV_H(), behavior: 'smooth' });
+      });
+    });
+
+    /* ─── SCROLL ANIMATIONS ─── */
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('[data-animate]').forEach(el => io.observe(el));
+    } else {
+      document.querySelectorAll('[data-animate]').forEach(el => el.classList.add('visible'));
+    }
+
+    /* ─── SCROLL SPY ─── */
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const spy = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    sections.forEach(s => spy.observe(s));
+
+    /* ─── SERVICES ACCORDION ─── */
+    document.querySelectorAll('.service-header').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.service-item');
+        const isOpen = item.classList.contains('open');
+        // close all
+        document.querySelectorAll('.service-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.service-header').setAttribute('aria-expanded', 'false');
+          i.querySelector('.service-body').style.maxHeight = null;
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+          const body = item.querySelector('.service-body');
+          body.style.maxHeight = '1200px';
+        }
+      });
+    });
+    // init first open
+    const firstService = document.querySelector('.service-item.open .service-body');
+    if (firstService) firstService.style.maxHeight = '1200px';
+
+    /* ─── FAQ ACCORDION ─── */
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+          i.querySelector('.faq-a').style.maxHeight = null;
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+          const body = item.querySelector('.faq-a');
+          body.style.maxHeight = '800px';
+        }
+      });
+    });
+
+    /* ─── FORM VALIDATION ─── */
+    const form = document.getElementById('contact-form');
+    function validateField(input) {
+      const errEl = document.getElementById('err-' + input.id.replace('f-', ''));
+      if (!errEl) return true;
+      let valid = true;
+      if (input.required && !input.value.trim()) valid = false;
+      if (input.type === 'email' && input.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) valid = false;
+      input.classList.toggle('error', !valid);
+      errEl.classList.toggle('visible', !valid);
+      return valid;
+    }
+    ['f-name','f-surname','f-email'].forEach(id => {
+      const el = document.getElementById(id);
+      el.addEventListener('blur', () => validateField(el));
+      el.addEventListener('input', () => { if (el.classList.contains('error')) validateField(el); });
+    });
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const fields = ['f-name','f-surname','f-email'].map(id => document.getElementById(id));
+      const allValid = fields.map(validateField).every(Boolean);
+      if (!allValid) {
+        fields.find(f => f.classList.contains('error'))?.focus();
+        return;
+      }
+      // mailto fallback
+      const name = document.getElementById('f-name').value.trim();
+      const surname = document.getElementById('f-surname').value.trim();
+      const email = document.getElementById('f-email').value.trim();
+      const phone = document.getElementById('f-phone').value.trim();
+      const topic = document.getElementById('f-topic').value;
+      const message = document.getElementById('f-message').value.trim();
+      const topicLabels = {
+        '': 'Noch offen / unsicher',
+        'executive': '1:1 Executive Coaching',
+        'performance': 'Performance Coaching',
+        'change': 'Führung in Veränderung',
+        'team': 'Team-Coaching',
+        'training': 'Führungskräfte-Training',
+        'personal': 'Persönlichkeitsentwicklung'
+      };
+      const body = [
+        'Neue Erstgespräch-Anfrage über beerformance.de',
+        '',
+        'Name: ' + name + ' ' + surname,
+        'E-Mail: ' + email,
+        phone ? 'Telefon: ' + phone : '',
+        'Thema: ' + (topicLabels[topic] || topic),
+        message ? 'Nachricht: ' + message : ''
+      ].filter(Boolean).join('\n');
+      window.location.href = 'mailto:info@beerformance.de?subject=Erstgespr%C3%A4ch-Anfrage%20von%20' + encodeURIComponent(name + ' ' + surname) + '&body=' + encodeURIComponent(body);
+      // Show success
+      document.querySelector('.form-fields').classList.add('hidden');
+      document.getElementById('form-success').classList.add('visible');
+    });
+
+    /* ─── MODALS ─── */
+    function openModal(id) {
+      const modal = document.getElementById('modal-' + id);
+      if (!modal) return;
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      modal.querySelector('.modal-close').focus();
+    }
+    function closeModal(modal) {
+      modal.hidden = true;
+      document.body.style.overflow = '';
+    }
+    document.querySelectorAll('[data-modal]').forEach(trigger => {
+      trigger.addEventListener('click', e => {
+        e.preventDefault();
+        openModal(trigger.dataset.modal);
+      });
+    });
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.querySelector('.modal-overlay').addEventListener('click', () => closeModal(modal));
+      modal.querySelector('.modal-close').addEventListener('click', () => closeModal(modal));
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal:not([hidden])').forEach(m => closeModal(m));
+      }
+    });
+  </script>
+</body>
+</html>
