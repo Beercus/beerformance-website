@@ -312,8 +312,8 @@
     }
     .service-header-left { display: flex; align-items: center; gap: 14px; }
     .service-num { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--bronze); line-height: 1; min-width: 24px; }
-    .service-name { font-size: 1rem; font-weight: 700; color: var(--text-dark); display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
-    .service-tag { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+    .service-name { font-size: 1rem; font-weight: 700; color: var(--text-dark); }
+    .service-tag { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; display: block; margin-top: 3px; }
     .service-chevron { color: var(--teal); transition: transform 0.3s var(--ease); flex-shrink: 0; }
     .service-item.open .service-chevron { transform: rotate(180deg); }
     .service-item.open .service-header { border-bottom: 1px solid var(--border); background: var(--teal-bg); }
@@ -787,7 +787,7 @@
             <button class="service-header" aria-expanded="true" aria-controls="svc1-body">
               <div class="service-header-left">
                 <span class="service-num">01</span>
-                <div class="service-name">1:1 Executive Coaching <span class="service-tag">Einzelpersonen</span></div>
+                <div><div class="service-name">1:1 Executive Coaching</div><span class="service-tag">Einzelpersonen</span></div>
               </div>
               <svg class="service-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
@@ -808,7 +808,7 @@
             <button class="service-header" aria-expanded="false" aria-controls="svc2-body">
               <div class="service-header-left">
                 <span class="service-num">02</span>
-                <div class="service-name">Performance Coaching <span class="service-tag">High Performer</span></div>
+                <div><div class="service-name">Performance Coaching</div><span class="service-tag">High Performer</span></div>
               </div>
               <svg class="service-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
@@ -829,7 +829,7 @@
             <button class="service-header" aria-expanded="false" aria-controls="svc3-body">
               <div class="service-header-left">
                 <span class="service-num">03</span>
-                <div class="service-name">Führung in Veränderung <span class="service-tag">Change-Prozesse</span></div>
+                <div><div class="service-name">Führung in Veränderung</div><span class="service-tag">Change-Prozesse</span></div>
               </div>
               <svg class="service-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
@@ -850,7 +850,7 @@
             <button class="service-header" aria-expanded="false" aria-controls="svc4-body">
               <div class="service-header-left">
                 <span class="service-num">04</span>
-                <div class="service-name">Team-Coaching <span class="service-tag">Teams &amp; Gruppen</span></div>
+                <div><div class="service-name">Team-Coaching</div><span class="service-tag">Teams &amp; Gruppen</span></div>
               </div>
               <svg class="service-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
@@ -871,7 +871,7 @@
             <button class="service-header" aria-expanded="false" aria-controls="svc5-body">
               <div class="service-header-left">
                 <span class="service-num">05</span>
-                <div class="service-name">Führungskräfte-Training <span class="service-tag">Workshops &amp; Trainings</span></div>
+                <div><div class="service-name">Führungskräfte-Training</div><span class="service-tag">Workshops &amp; Trainings</span></div>
               </div>
               <svg class="service-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
@@ -892,7 +892,7 @@
             <button class="service-header" aria-expanded="false" aria-controls="svc6-body">
               <div class="service-header-left">
                 <span class="service-num">06</span>
-                <div class="service-name">Persönlichkeitsentwicklung <span class="service-tag">Privatpersonen</span></div>
+                <div><div class="service-name">Persönlichkeitsentwicklung</div><span class="service-tag">Privatpersonen</span></div>
               </div>
               <svg class="service-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
