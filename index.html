@@ -83,6 +83,8 @@
     .btn-primary:hover { background: var(--bronze-light); box-shadow: 0 6px 24px rgba(155,108,58,0.45); transform: translateY(-1px); }
     .btn-secondary { background: transparent; color: var(--teal); border: 2px solid var(--teal); }
     .btn-secondary:hover { background: var(--teal); color: #fff; }
+    .btn-hero-outline { background: transparent; color: rgba(255,255,255,0.85); border: 2px solid rgba(255,255,255,0.35); }
+    .btn-hero-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); color: #fff; }
     .btn-white { background: #fff; color: var(--teal); font-weight: 700; }
     .btn-white:hover { background: var(--bronze-pale); color: var(--teal-deep); transform: translateY(-1px); }
     .btn-outline-white { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.7); }
@@ -155,40 +157,68 @@
 
     /* ─── HERO ─── */
     #hero {
-      background: var(--white); padding: 80px 0 72px;
+      background: var(--teal-deep);
+      min-height: 100vh; padding: 140px 0 100px;
       position: relative; overflow: hidden;
+      display: flex; align-items: center;
+    }
+    /* Atmospheric orbs */
+    #hero::before {
+      content: ''; position: absolute; top: -120px; right: 5%;
+      width: 560px; height: 560px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(155,108,58,0.28) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    #hero::after {
+      content: ''; position: absolute; bottom: -140px; left: -5%;
+      width: 480px; height: 480px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(79,116,128,0.45) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-orb-mid {
+      position: absolute; top: 55%; left: 42%;
+      width: 320px; height: 320px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(155,108,58,0.12) 0%, transparent 65%);
+      pointer-events: none; transform: translate(-50%,-50%);
     }
     .hero-inner {
       max-width: 1120px; margin: 0 auto; padding: 0 24px;
       display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+      position: relative; z-index: 1;
     }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
-      background: var(--bronze-pale); border: 1px solid rgba(155,108,58,0.25);
+      background: rgba(155,108,58,0.18); border: 1px solid rgba(155,108,58,0.4);
       border-radius: var(--r-full); padding: 7px 14px; margin-bottom: 24px;
-      font-size: 0.8rem; font-weight: 700; color: var(--bronze); letter-spacing: 0.06em; text-transform: uppercase;
+      font-size: 0.8rem; font-weight: 700; color: #d4a870; letter-spacing: 0.06em; text-transform: uppercase;
     }
-    .hero-badge-dot { width: 7px; height: 7px; background: var(--bronze); border-radius: 50%; animation: pulse 2s infinite; }
+    .hero-badge-dot { width: 7px; height: 7px; background: #d4a870; border-radius: 50%; animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
-    .hero-title { margin-bottom: 20px; }
-    .hero-title em { font-style: italic; color: var(--bronze); }
-    .hero-sub { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 32px; line-height: 1.65; max-width: 480px; }
+    .hero-title { margin-bottom: 20px; color: #ffffff; }
+    .hero-title em { font-style: italic; color: #c8924a; }
+    .hero-sub { font-size: 1.1rem; color: rgba(255,255,255,0.65); margin-bottom: 32px; line-height: 1.65; max-width: 480px; }
     .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
     .hero-trust { display: flex; flex-wrap: wrap; gap: 16px; }
     .hero-trust-item {
       display: flex; align-items: center; gap: 8px;
-      font-size: 0.8rem; font-weight: 700; color: var(--text-muted); letter-spacing: 0.03em;
+      font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.55); letter-spacing: 0.03em;
     }
-    .hero-trust-item svg { color: var(--bronze); flex-shrink: 0; }
+    .hero-trust-item svg { color: #c8924a; flex-shrink: 0; }
     .hero-visual {
       position: relative; display: flex; align-items: center; justify-content: center;
     }
+    .hero-visual::before {
+      content: ''; position: absolute;
+      width: 460px; height: 460px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.90) 25%, rgba(255,255,255,0.45) 50%, rgba(255,255,255,0.1) 68%, transparent 78%);
+      pointer-events: none; z-index: 0;
+    }
     .hero-logo-wrap {
       display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 1; padding: 20px;
     }
     .hero-logo-img {
-      width: 320px; height: auto; object-fit: contain;
-      mix-blend-mode: multiply;
+      width: 280px; height: auto; object-fit: contain; mix-blend-mode: multiply;
     }
     .hero-float-badge {
       position: absolute; bottom: 20px; right: -12px; z-index: 3;
@@ -482,7 +512,8 @@
     @media (max-width: 1024px) {
       .hero-inner { grid-template-columns: 1fr; gap: 48px; }
       .hero-visual { order: -1; }
-      .hero-logo-img { width: 260px; }
+      .hero-logo-img { width: 200px; }
+      .hero-visual::before { width: 320px; height: 320px; }
       .about-inner { grid-template-columns: 1fr; }
       .about-card { max-width: 360px; }
       .cta-inner { grid-template-columns: 1fr; }
@@ -561,6 +592,7 @@
 
     <!-- ═══ HERO ═══ -->
     <section id="hero" aria-labelledby="hero-heading">
+      <div class="hero-orb-mid" aria-hidden="true"></div>
       <div class="hero-inner">
         <div class="hero-content">
           <div class="hero-badge" data-animate>
@@ -576,7 +608,7 @@
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
               Kostenloses Erstgespräch
             </a>
-            <a href="#services" class="btn btn-secondary">
+            <a href="#services" class="btn btn-hero-outline">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               Leistungen ansehen
             </a>
