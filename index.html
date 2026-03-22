@@ -817,8 +817,8 @@
         </div>
         <div class="services-grid" id="services-grid">
 
-          <div class="service-item open" data-animate>
-            <button class="service-header" aria-expanded="true" aria-controls="svc1-body">
+          <div class="service-item" data-animate>
+            <button class="service-header" aria-expanded="false" aria-controls="svc1-body">
               <div class="service-header-left">
                 <span class="service-num">01</span>
                 <div><div class="service-name">1:1 Executive Coaching</div><span class="service-tag">Führungskräfte</span></div>
@@ -1433,9 +1433,7 @@
         }
       });
     });
-    // init first open
-    const firstService = document.querySelector('.service-item.open .service-body');
-    if (firstService) firstService.style.maxHeight = '1200px';
+
 
     /* ─── FAQ ACCORDION ─── */
     document.querySelectorAll('.faq-q').forEach(btn => {
