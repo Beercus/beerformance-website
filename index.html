@@ -159,16 +159,30 @@
 
     /* ─── NAVIGATION ─── */
     #nav {
-      position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.97);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border); transition: box-shadow 0.25s var(--ease);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
     }
-    #nav.scrolled { box-shadow: var(--shadow-md); }
+    #nav.scrolled {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+    }
+    #nav.scrolled .nav-links a { color: var(--text-body); }
+    #nav.scrolled .nav-links a:hover { color: var(--teal); background: var(--teal-bg); }
+    #nav:not(.scrolled) .nav-links a { color: rgba(255,255,255,0.9); }
+    #nav:not(.scrolled) .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+    #nav:not(.scrolled) .hamburger span { background: #fff; }
+    #nav:not(.scrolled) .nav-cta .btn-primary { background: rgba(255,255,255,0.15); border: 2px solid rgba(255,255,255,0.7); box-shadow: none; }
+    #nav:not(.scrolled) .nav-cta .btn-primary:hover { background: rgba(255,255,255,0.25); }
     .nav-inner {
       max-width: 1120px; margin: 0 auto; padding: 0 24px;
       height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; gap: 24px;
     }
-    .nav-logo img { height: 40px; width: auto; }
+    .nav-logo img { height: 40px; width: auto; transition: filter 0.35s ease; }
+    #nav:not(.scrolled) .nav-logo img { filter: brightness(0) invert(1); }
     .nav-links { display: flex; align-items: center; gap: 4px; }
     .nav-links a {
       padding: 8px 14px; border-radius: var(--r-md); font-size: 0.9rem; font-weight: 600;
@@ -202,7 +216,7 @@
     /* ─── HERO ─── */
     #hero {
       background: url('Bild.png') center center / cover no-repeat;
-      padding: 100px 0 88px;
+      padding: 160px 0 100px;
       position: relative; overflow: hidden;
     }
     #hero::before {
@@ -577,11 +591,6 @@
 <body>
   <a href="#main" class="skip-link">Zum Inhalt springen</a>
 
-  <!-- ═══ URGENCY STRIP ═══ -->
-  <div id="urgency-strip" role="banner">
-    Limitierte Plätze im Q2 verfügbar — Jetzt sichern!
-    <a href="#cta">Erstgespräch buchen &rarr;</a>
-  </div>
 
   <!-- ═══ NAVIGATION ═══ -->
   <nav id="nav" aria-label="Hauptnavigation">
