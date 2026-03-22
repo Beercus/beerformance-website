@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="5 Fragen, die jede Coaching-Session verändern — Executive Coaching Impuls von Marcus Beer, BEERFORMANCE COACHING.">
+  <title>5 Fragen, die jede Coaching-Session verändern | BEERFORMANCE COACHING</title>
+  <link rel="icon" type="image/png" href="Logo nur Bär.png">
+  <link rel="apple-touch-icon" href="Logo nur Bär.png">
+  <style>
+    :root {
+      --teal:        #2e474e;
+      --teal-deep:   #1d2f34;
+      --teal-mid:    #3d5e67;
+      --teal-bg:     #eef3f4;
+      --bronze:      #9b6c3a;
+      --bronze-light:#b8854f;
+      --bronze-pale: #f3e8d8;
+      --white:       #ffffff;
+      --text-dark:   #1a2a2d;
+      --text-body:   #344a50;
+      --text-muted:  #6b8a91;
+      --border:      #dde8ea;
+      --font-display: 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+      --font-body:    system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      --nav-h: 72px;
+      --r-md: 8px; --r-lg: 16px; --r-xl: 24px; --r-full: 9999px;
+      --shadow-sm: 0 2px 12px rgba(46,71,78,0.08);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--text-body); background: var(--white); overflow-x: hidden; line-height: 1.7; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+
+    #nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-h); background: var(--white); border-bottom: 1px solid var(--border); box-shadow: 0 2px 12px rgba(46,71,78,0.08); }
+    .nav-inner { max-width: 1120px; margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .nav-logo img { height: 40px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a { padding: 8px 14px; border-radius: var(--r-md); font-size: 0.9rem; font-weight: 600; color: var(--text-body); transition: color 0.18s, background 0.18s; }
+    .nav-links a:hover { color: var(--teal); background: var(--teal-bg); }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: var(--r-full); font-weight: 700; font-size: 0.9rem; transition: background 0.2s, transform 0.2s; cursor: pointer; }
+    .btn-primary { background: var(--bronze); color: #fff; }
+    .btn-primary:hover { background: var(--bronze-light); transform: translateY(-1px); }
+    @media (max-width: 768px) { .nav-links { display: none; } }
+
+    .post-hero { margin-top: var(--nav-h); position: relative; }
+    .post-hero-img { width: 100%; height: 420px; object-fit: cover; object-position: center 40%; }
+    .post-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(29,47,52,0.75) 0%, rgba(29,47,52,0.1) 60%); }
+    @media (max-width: 768px) { .post-hero-img { height: 260px; } }
+
+    .breadcrumb { background: var(--teal-bg); border-bottom: 1px solid var(--border); }
+    .breadcrumb-inner { max-width: 800px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-muted); }
+    .breadcrumb a { color: var(--bronze); font-weight: 600; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 56px 24px 80px; }
+    .article-meta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 32px; }
+    .article-tag { background: var(--bronze-pale); color: var(--bronze); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 12px; border-radius: var(--r-full); }
+    .article-date, .article-readtime { font-size: 0.85rem; color: var(--text-muted); display: flex; align-items: center; gap: 4px; }
+    .article-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; color: var(--text-dark); line-height: 1.2; margin-bottom: 24px; }
+    .article-lead { font-size: 1.15rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+
+    .insights-box { background: var(--teal-bg); border-left: 4px solid var(--teal); border-radius: var(--r-lg); padding: 24px 28px; margin-bottom: 40px; }
+    .insights-box h3 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--teal); margin-bottom: 12px; }
+    .insights-box ul { display: flex; flex-direction: column; gap: 8px; }
+    .insights-box li { display: flex; gap: 10px; font-size: 0.95rem; }
+    .insights-box li::before { content: '→'; color: var(--bronze); font-weight: 700; flex-shrink: 0; }
+
+    /* FRAGE-KARTEN */
+    .question-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--r-xl);
+      padding: 28px 32px; margin: 32px 0;
+      border-top: 4px solid var(--bronze);
+      box-shadow: 0 2px 12px rgba(46,71,78,0.06);
+    }
+    .question-number { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--bronze); margin-bottom: 8px; }
+    .question-text { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--text-dark); margin-bottom: 16px; font-style: italic; }
+    .question-explanation { font-size: 0.975rem; color: var(--text-body); line-height: 1.7; }
+
+    .article-content { font-size: 1.05rem; line-height: 1.8; color: var(--text-body); }
+    .article-content h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--text-dark); margin: 48px 0 16px; }
+    .article-content p { margin-bottom: 20px; }
+    .article-content blockquote { border-left: 4px solid var(--bronze); margin: 32px 0; padding: 16px 24px; background: var(--bronze-pale); border-radius: 0 var(--r-lg) var(--r-lg) 0; font-family: var(--font-display); font-style: italic; font-size: 1.1rem; color: var(--text-dark); }
+    .article-content ul { margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; }
+    .article-content ul li { padding-left: 20px; position: relative; }
+    .article-content ul li::before { content: '·'; position: absolute; left: 0; color: var(--bronze); font-weight: 700; font-size: 1.2rem; line-height: 1.6; }
+
+    .article-author { display: flex; gap: 20px; align-items: center; padding: 32px; background: var(--teal-bg); border-radius: var(--r-xl); margin-top: 56px; margin-bottom: 40px; }
+    .author-avatar { width: 64px; height: 64px; border-radius: var(--r-full); object-fit: cover; flex-shrink: 0; }
+    .author-name { font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+    .author-bio { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+    .article-cta { background: var(--teal-deep); border-radius: var(--r-xl); padding: 40px; text-align: center; color: #fff; }
+    .article-cta h3 { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 12px; }
+    .article-cta p { color: rgba(255,255,255,0.75); margin-bottom: 24px; }
+    .article-cta .btn { margin: 0 auto; }
+
+    .back-to-blog { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; color: var(--bronze); font-size: 0.9rem; margin-bottom: 40px; }
+    .back-to-blog:hover { text-decoration: underline; }
+
+    footer { background: var(--teal-deep); color: rgba(255,255,255,0.75); padding: 48px 0 24px; }
+    .footer-inner { max-width: 1120px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-brand img { height: 36px; margin-bottom: 12px; filter: brightness(0) invert(1); }
+    .footer-brand p { font-size: 0.875rem; line-height: 1.6; }
+    .footer-col h4 { color: #fff; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+    .footer-col a { display: block; font-size: 0.875rem; margin-bottom: 8px; transition: color 0.2s; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom { max-width: 1120px; margin: 0 auto; padding: 24px 24px 0; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; font-size: 0.8rem; flex-wrap: wrap; gap: 8px; }
+    .footer-bottom-links { display: flex; gap: 16px; }
+    @media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr; gap: 24px; } }
+  </style>
+</head>
+<body>
+
+  <nav id="nav" aria-label="Hauptnavigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="BEERFORMANCE COACHING – Startseite">
+        <img src="logo_bear_horizontal.png" alt="BEERFORMANCE COACHING Logo" height="40">
+      </a>
+      <div class="nav-links">
+        <a href="index.html#services">Leistungen</a>
+        <a href="index.html#about">Über mich</a>
+        <a href="index.html#process">Ablauf</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#blog">Blog</a>
+      </div>
+      <a href="index.html#cta" class="btn btn-primary">Erstgespräch buchen</a>
+    </div>
+  </nav>
+
+  <div class="breadcrumb">
+    <div class="breadcrumb-inner">
+      <a href="index.html">Startseite</a>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      <a href="index.html#blog">Blog</a>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      <span>5 Fragen, die jede Coaching-Session verändern</span>
+    </div>
+  </div>
+
+  <div class="post-hero">
+    <img class="post-hero-img" src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1400&q=85" alt="Füller auf Papier – Die Kraft der richtigen Fragen">
+    <div class="post-hero-overlay"></div>
+  </div>
+
+  <main>
+    <div class="article-wrap">
+
+      <a href="index.html#blog" class="back-to-blog">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Zurück zum Blog
+      </a>
+
+      <div class="article-meta">
+        <span class="article-tag">Persönlichkeit</span>
+        <span class="article-date">März 2026</span>
+        <span class="article-readtime">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          7 Minuten Lesezeit
+        </span>
+      </div>
+
+      <h1 class="article-title">5 Fragen, die jede Coaching-Session verändern</h1>
+
+      <p class="article-lead">Coaching ist kein Ratgeben — es ist ein Prozess des gezielten Fragens. Die richtigen Fragen öffnen Türen, die man jahrelang nicht gesehen hat. Hier sind fünf davon, die ich in fast jeder Session einsetze — und die Sie sofort selbst nutzen können.</p>
+
+      <div class="insights-box">
+        <h3>Das Wichtigste auf einen Blick</h3>
+        <ul>
+          <li>Gute Fragen durchbrechen automatische Denkmuster</li>
+          <li>Fragen, die mit „Was" beginnen, erzeugen mehr Klarheit als „Warum"-Fragen</li>
+          <li>Die fünf Fragen lassen sich sofort im Alltag anwenden</li>
+          <li>Reflexion allein reicht nicht — sie braucht die richtige Frage als Auslöser</li>
+        </ul>
+      </div>
+
+      <div class="article-content">
+
+        <h2>Warum Fragen mächtiger sind als Antworten</h2>
+        <p>Wenn Menschen zu mir ins Coaching kommen, bringen sie oft bereits eine Ahnung der Lösung mit. Sie wissen tief innen, was sie verändern wollen. Was ihnen fehlt, ist nicht die Information — sondern der Zugang zu dem, was sie bereits wissen. Und genau dafür sind Fragen das stärkste Werkzeug, das es gibt.</p>
+        <p>Eine gute Frage tut dreierlei: Sie unterbricht das automatische Denken, sie eröffnet einen neuen Betrachtungswinkel — und sie übergibt die Verantwortung zurück an den Menschen, der die Frage hört. Das ist das Gegenteil von Beratung. Und genau deshalb wirkt es tiefer.</p>
+
+        <blockquote>„Es sind nicht die Antworten, die das Leben verändern. Es sind die Fragen." — Rainer Maria Rilke</blockquote>
+
+      </div>
+
+      <div class="question-card">
+        <div class="question-number">Frage 1</div>
+        <div class="question-text">„Was wäre möglich, wenn das kein Problem wäre?"</div>
+        <p class="question-explanation">Diese Frage ist besonders wirksam, wenn jemand in einem Problem feststeckt und immer um dieselbe Einschränkung kreist. Sie lädt dazu ein, gedanklich über das Hindernis hinauszudenken — ohne es zu leugnen. Der Unterschied ist subtil, aber gewaltig: Plötzlich öffnet sich Raum für Möglichkeiten, die vorher unsichtbar waren. Ich nutze diese Frage fast täglich im Coaching, weil sie so einfach und gleichzeitig so kraftvoll ist.</p>
+      </div>
+
+      <div class="question-card">
+        <div class="question-number">Frage 2</div>
+        <div class="question-text">„Was will ich wirklich — und was will ich eigentlich nicht?"</div>
+        <p class="question-explanation">Viele Menschen wissen präzise, was sie nicht wollen. Aber wenn man sie fragt, was sie stattdessen wollen, werden sie unscharf. Diese Frage zwingt zur Klarheit — und deckt dabei oft auf, dass vermeintliche Ziele in Wirklichkeit Fremdziele sind: erwartet vom Chef, von der Familie, von der Gesellschaft. Wer den Unterschied erkennt, beginnt, anders zu handeln.</p>
+      </div>
+
+      <div class="question-card">
+        <div class="question-number">Frage 3</div>
+        <div class="question-text">„Wenn du dir selbst ein Coach wärst — was würdest du dir jetzt raten?"</div>
+        <p class="question-explanation">Diese Frage erzeugt eine hilfreiche Distanz zum eigenen Problem. Wir sind für andere oft klüger als für uns selbst. Wenn man sich vorstellt, einer guten Freundin oder einem guten Freund in derselben Situation zu raten, kommen plötzlich Antworten, die vorher blockiert schienen. Im Coaching erlebe ich immer wieder, wie Menschen mit dieser Frage innerhalb von Sekunden zu Einsichten gelangen, für die wir sonst Stunden gebraucht hätten.</p>
+      </div>
+
+      <div class="question-card">
+        <div class="question-number">Frage 4</div>
+        <div class="question-text">„Was würde ich tun, wenn ich wüsste, dass ich nicht scheitern kann?"</div>
+        <p class="question-explanation">Angst vor dem Scheitern ist einer der größten Blockierer menschlicher Potenziale. Diese Frage nimmt die Angst nicht weg — aber sie macht sie sichtbar. Und was sichtbar ist, kann bearbeitet werden. Die Antworten, die auf diese Frage folgen, zeigen oft, was der Klient wirklich will. Und dann beginnt die eigentliche Coaching-Arbeit: Was hält Sie davon ab, genau das jetzt anzugehen?</p>
+      </div>
+
+      <div class="question-card">
+        <div class="question-number">Frage 5</div>
+        <div class="question-text">„In welcher Version meiner selbst will ich heute handeln?"</div>
+        <p class="question-explanation">Das ist die Frage, die ich am liebsten am Beginn eines Gesprächs stelle — oder wenn jemand zwischen zwei Handlungsoptionen steht. Sie lädt dazu ein, aus der reaktiven in die gestaltende Haltung zu wechseln. Nicht: „Was passiert mir?" Sondern: „Wer will ich sein?" Diese kleine Verschiebung verändert alles. Sie ist der Kern dessen, was ich unter „Führungspersönlichkeit" verstehe.</p>
+      </div>
+
+      <div class="article-content">
+
+        <h2>Wie Sie diese Fragen für sich nutzen</h2>
+        <p>Sie müssen nicht im Coaching sein, um diese Fragen zu nutzen. Nehmen Sie sich 10 Minuten, ein Notizbuch, eine ruhige Minute — und stellen Sie sich eine dieser Fragen. Schreiben Sie auf, was kommt. Ohne Zensur, ohne Bewertung. Was Sie finden werden, wird Sie überraschen.</p>
+        <p>Was im Coaching zusätzlich passiert: Ein erfahrener Coach hört nicht nur die Antwort auf die Frage — er hört, was zwischen den Zeilen steht. Er bemerkt den Moment des Zögerns, das Aufleuchten in den Augen, die plötzliche Pause. Und genau dort setzt die nächste Frage an.</p>
+        <p>Das lässt sich nicht vollständig selbst replizieren. Aber der Anfang — die Bereitschaft, sich wirklich zu fragen — der liegt immer bei Ihnen.</p>
+
+      </div>
+
+      <div class="article-author">
+        <img class="author-avatar" src="1675689276759.jpeg" alt="Marcus Beer – Executive Coach">
+        <div>
+          <div class="author-name">Marcus Beer</div>
+          <p class="author-bio">Executive Coach & Trainer · NLP Master (DVNLP) · Geprüfter Fachtrainer (BDVT e.V.) · Systemisch-integraler Coach (B-NLP). Marcus Beer begleitet Führungskräfte, Unternehmer und High Performer dabei, klarer zu führen, besser zu entscheiden und nachhaltig zu wirken.</p>
+        </div>
+      </div>
+
+      <div class="article-cta">
+        <h3>Welche Frage stellen Sie sich gerade?</h3>
+        <p>Im kostenlosen Erstgespräch beginnen wir genau da, wo Sie jetzt stehen. Kein Vortrag, keine Ratschläge — sondern das Gespräch, das Klarheit schafft.</p>
+        <a href="index.html#cta" class="btn btn-primary">Kostenloses Erstgespräch buchen</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo_bear_horizontal.png" alt="BEERFORMANCE COACHING">
+        <p>Executive Coaching für Führung &amp; Performance — mit Marcus Beer.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Leistungen</h4>
+        <a href="index.html#services">1:1 Executive Coaching</a>
+        <a href="index.html#services">Performance Coaching</a>
+        <a href="index.html#services">Gruppen-Coaching</a>
+      </div>
+      <div class="footer-col">
+        <h4>Infos</h4>
+        <a href="index.html#about">Über Marcus Beer</a>
+        <a href="index.html#process">Ablauf &amp; Methodik</a>
+        <a href="index.html#faq">Häufige Fragen</a>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <a href="tel:+4915129785094">+49 151 29785094</a>
+        <a href="mailto:info@beerformance.de">info@beerformance.de</a>
+        <a href="index.html#cta">Erstgespräch buchen</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 BEERFORMANCE COACHING · Marcus Beer</span>
+      <div class="footer-bottom-links">
+        <a href="index.html">Impressum</a>
+        <a href="index.html">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
