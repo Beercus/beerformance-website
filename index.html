@@ -177,6 +177,8 @@
     #nav:not(.scrolled) .hamburger span { background: #fff; }
     #nav:not(.scrolled) .nav-cta .btn-primary { background: rgba(255,255,255,0.15); border: 2px solid rgba(255,255,255,0.7); box-shadow: none; }
     #nav:not(.scrolled) .nav-cta .btn-primary:hover { background: rgba(255,255,255,0.25); }
+    #hero .btn-primary { background: #b8832e; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+    #hero .btn-primary:hover { background: #cf9540; }
     .nav-inner {
       max-width: 1120px; margin: 0 auto; padding: 0 24px;
       height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; gap: 24px;
@@ -222,6 +224,11 @@
     #hero::before {
       content: ''; position: absolute; inset: 0;
       background: linear-gradient(to right, rgba(10,25,30,0.82) 0%, rgba(10,25,30,0.55) 60%, rgba(10,25,30,0.35) 100%);
+      z-index: 0;
+    }
+    #hero::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
+      background: linear-gradient(to bottom, transparent, #fff);
       z-index: 0;
     }
     #hero .hero-inner { position: relative; z-index: 1; }
@@ -563,6 +570,7 @@
       .hamburger { display: flex; }
       .hero-inner { text-align: center; }
       .hero-trust { flex-direction: column; align-items: flex-start; width: fit-content; margin: 0 auto; }
+      .hero-trust-item { text-align: left; }
       .hero-ctas { justify-content: center; }
       .hero-sub { margin: 0 auto 32px; }
       .pain-grid { grid-template-columns: 1fr; }
@@ -1129,7 +1137,7 @@
               <div class="form-fields">
                 <h3 class="form-title">Erstgespräch anfragen</h3>
                 <p class="form-sub">Kostenlos, unverbindlich — in weniger als 2 Minuten ausgefüllt.</p>
-                <form id="contact-form" novalidate>
+                <form id="contact-form" novalidate data-formspree-id="YOUR_FORM_ID">
                   <div class="form-row">
                     <div class="form-group">
                       <label for="f-name">Vorname *</label>
@@ -1490,32 +1498,41 @@
         fields.find(f => f.classList.contains('error'))?.focus();
         return;
       }
-      // mailto fallback
-      const name = document.getElementById('f-name').value.trim();
-      const surname = document.getElementById('f-surname').value.trim();
-      const email = document.getElementById('f-email').value.trim();
-      const phone = document.getElementById('f-phone').value.trim();
-      const topic = document.getElementById('f-topic').value;
-      const message = document.getElementById('f-message').value.trim();
-      const topicLabels = {
-        '': 'Noch offen / unsicher',
-        'executive': '1:1 Executive Coaching',
-        'performance': 'Performance Coaching',
-        'personal': 'Persönlichkeitsentwicklung'
-      };
-      const body = [
-        'Neue Erstgespräch-Anfrage über beerformance.de',
-        '',
-        'Name: ' + name + ' ' + surname,
-        'E-Mail: ' + email,
-        phone ? 'Telefon: ' + phone : '',
-        'Thema: ' + (topicLabels[topic] || topic),
-        message ? 'Nachricht: ' + message : ''
-      ].filter(Boolean).join('\n');
-      window.location.href = 'mailto:info@beerformance.de?subject=Erstgespr%C3%A4ch-Anfrage%20von%20' + encodeURIComponent(name + ' ' + surname) + '&body=' + encodeURIComponent(body);
-      // Show success
-      document.querySelector('.form-fields').classList.add('hidden');
-      document.getElementById('form-success').classList.add('visible');
+      const formId = form.dataset.formspreeId;
+      const submitBtn = form.querySelector('.form-submit');
+      const data = new FormData(form);
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Wird gesendet…';
+      if (formId && formId !== 'YOUR_FORM_ID') {
+        fetch('https://formspree.io/f/' + formId, {
+          method: 'POST', body: data, headers: { 'Accept': 'application/json' }
+        }).then(r => {
+          if (r.ok) {
+            document.querySelector('.form-fields').classList.add('hidden');
+            document.getElementById('form-success').classList.add('visible');
+          } else {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Erstgespräch anfragen';
+            alert('Es gab einen Fehler. Bitte versuchen Sie es erneut oder schreiben Sie direkt an info@beerformance.de');
+          }
+        }).catch(() => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Erstgespräch anfragen';
+          alert('Es gab einen Fehler. Bitte schreiben Sie direkt an info@beerformance.de');
+        });
+      } else {
+        // Fallback mailto bis Formspree ID eingetragen ist
+        const name = document.getElementById('f-name').value.trim();
+        const surname = document.getElementById('f-surname').value.trim();
+        const email = document.getElementById('f-email').value.trim();
+        const phone = document.getElementById('f-phone').value.trim();
+        const topic = document.getElementById('f-topic').value;
+        const message = document.getElementById('f-message').value.trim();
+        const body = ['Name: '+name+' '+surname,'E-Mail: '+email,phone?'Telefon: '+phone:'','Thema: '+topic,message?'Nachricht: '+message:''].filter(Boolean).join('\n');
+        window.location.href = 'mailto:info@beerformance.de?subject=Erstgespr%C3%A4ch-Anfrage&body=' + encodeURIComponent(body);
+        document.querySelector('.form-fields').classList.add('hidden');
+        document.getElementById('form-success').classList.add('visible');
+      }
     });
 
     /* ─── MODALS ─── */
