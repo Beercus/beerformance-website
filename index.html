@@ -201,31 +201,39 @@
 
     /* ─── HERO ─── */
     #hero {
-      background: var(--white); padding: 80px 0 72px;
+      background: url('Bild.png') center center / cover no-repeat;
+      padding: 100px 0 88px;
       position: relative; overflow: hidden;
     }
+    #hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(10,25,30,0.82) 0%, rgba(10,25,30,0.55) 60%, rgba(10,25,30,0.35) 100%);
+      z-index: 0;
+    }
+    #hero .hero-inner { position: relative; z-index: 1; }
     .hero-inner {
       max-width: 1120px; margin: 0 auto; padding: 0 24px;
       display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
     }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
-      background: var(--bronze-pale); border: 1px solid rgba(155,108,58,0.25);
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
       border-radius: var(--r-full); padding: 7px 14px; margin-bottom: 24px;
-      font-size: 0.8rem; font-weight: 700; color: var(--bronze); letter-spacing: 0.06em; text-transform: uppercase;
+      font-size: 0.8rem; font-weight: 700; color: #d4a96a; letter-spacing: 0.06em; text-transform: uppercase;
+      backdrop-filter: blur(8px);
     }
     .hero-badge-dot { width: 7px; height: 7px; background: var(--bronze); border-radius: 50%; animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
-    .hero-title { margin-bottom: 20px; }
-    .hero-title em { font-style: italic; color: var(--bronze); }
-    .hero-sub { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 32px; line-height: 1.65; max-width: 480px; }
+    .hero-title { margin-bottom: 20px; color: #fff; }
+    .hero-title em { font-style: italic; color: #d4a96a; }
+    .hero-sub { font-size: 1.1rem; color: rgba(255,255,255,0.8); margin-bottom: 32px; line-height: 1.65; max-width: 480px; }
     .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
     .hero-trust { display: flex; flex-wrap: wrap; gap: 16px; }
     .hero-trust-item {
       display: flex; align-items: center; gap: 8px;
-      font-size: 0.8rem; font-weight: 700; color: var(--text-muted); letter-spacing: 0.03em;
+      font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.75); letter-spacing: 0.03em;
     }
-    .hero-trust-item svg { color: var(--bronze); flex-shrink: 0; }
+    .hero-trust-item svg { color: #d4a96a; flex-shrink: 0; }
     .hero-visual {
       position: relative; display: flex; align-items: center; justify-content: center;
     }
@@ -234,7 +242,7 @@
     }
     .hero-logo-img {
       width: 320px; height: auto; object-fit: contain;
-      mix-blend-mode: multiply;
+      filter: brightness(0) invert(1);
     }
     .hero-float-badge {
       position: absolute; bottom: 20px; right: -12px; z-index: 3;
