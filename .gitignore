@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# Claude Code / Agent-Tools (lokal)
+.claude/
+.agent/
+.agents/
+skills-lock.json
+
+# Private Dokumente (z. B. Visitenkarte)
+*.pdf
